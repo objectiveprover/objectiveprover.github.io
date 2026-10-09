@@ -1,0 +1,317 @@
+---
+import conciseImage from "@/assets/concisecss.jpg";
+import Figure from "@/components/Figure.astro"
+
+type Link = {
+  label: string;
+  url?: string;
+}
+
+
+type Client = {
+  name: string;
+  url?: string;
+  what: string;
+  scope: string;
+  collaborators?: Link[];
+  design?: Link;
+}
+
+// "A", "A and B", "A, B and C"
+const withSeparators = (list: Link[]) =>
+  list.map((p, i) => ({
+    ...p,
+    sep: i === 0 ? "" : i === list.length - 1 ? " and " : ", ",
+  }));
+
+const keenan: Link = { label: "Keenan Payne", url: "https://keenanpayne.com" };
+const nels: Link = { label: "Nels Andereck", url: "https://www.nelsandereck.com/" };
+const play = (path = ""): Link => ({ label: "Play", url: `https://play.studio/${path}` });
+
+const clients: Client[] = [
+  {
+    name: "Neuralink",
+    url: "https://neuralink.com/",
+    what: "Brain–computer interfaces.",
+    scope: "Built the marketing site from scratch and maintained it afterward.",
+    collaborators: [keenan],
+    design: play("work/neuralink"),
+  },
+  {
+    name: "Sparrow",
+    url: "https://sparrow.com/",
+    what: "Employee leave management.",
+    scope: "Built the marketing site from scratch, including the CMS integration, and maintained it afterward.",
+    collaborators: [keenan, nels],
+    design: play("work/sparrow"),
+  },
+  {
+    name: "Transform",
+    what: "Metrics layer for data teams, now part of dbt Labs.",
+    scope: "Built the marketing site from scratch, including the CMS integration, and maintained it afterward.",
+    collaborators: [keenan],
+    design: play(),
+  },
+  {
+    name: "Sanno Capital",
+    url: "https://sannocapital.com/",
+    what: "Investment firm.",
+    scope: "Built the marketing site from scratch, including the CMS integration.",
+    collaborators: [keenan],
+    design: play(),
+  },
+  {
+    name: "Refactor Capital",
+    url: "https://refactor.com/",
+    what: "Venture capital firm.",
+    scope: "Built the marketing site from scratch, including the CMS integration.",
+    collaborators: [keenan, nels],
+    design: play("work/refactor"),
+  },
+  {
+    name: "Collective[i]",
+    url: "https://collectivei.com/",
+    what: "AI-driven sales intelligence.",
+    scope: "Built the marketing site from scratch, including the CMS integration.",
+    collaborators: [keenan],
+    design: play("work/collective-i"),
+  },
+  {
+    name: "Cy Biopharma",
+    what: "Biopharmaceutical company.",
+    scope: "Built the interim landing page while the full site was being designed and developed by others.",
+    design: play("work/cy-biopharma"),
+  },
+  {
+    name: "Play",
+    url: "https://play.studio/",
+    what: "Design studio.",
+    scope: "Rebuilt the studio’s own site from scratch, replacing a codebase that had become too complex to update.",
+    design: { label: "Play (in-house)" },
+  },
+  {
+    name: "Simulmedia",
+    url: "https://www.simulmedia.com/",
+    what: "TV advertising platform.",
+    scope:
+      "Migrated the site off a deprecated framework, then handled ongoing content updates and the layout and design adjustments they required.",
+  },
+  {
+    name: "PlayerWON",
+    url: "https://www.playerwon.com/",
+    what: "In-game advertising platform, a division of Simulmedia.",
+    scope: "Migrated the site off the same deprecated framework, aligned its codebase with Simulmedia’s (including some shared components), and maintained it.",
+  },
+  {
+    name: "GetWhys",
+    url: "https://www.getwhys.io/",
+    what: "AI for customer research.",
+    scope: "Contributed to both the overall design and the development of the marketing site.",
+    collaborators: [keenan],
+  },
+  {
+    name: "Metrus Energy",
+    url: "https://metrusenergy.com/",
+    what: "Energy-efficiency financing.",
+    scope: "Built the marketing site and maintained it for several years.",
+    collaborators: [keenan],
+    design: { label: "PACT", url: "https://www.pact.studio/" },
+  },
+  {
+    name: "Atinc",
+    url: "https://atinc.vc/",
+    what: "Venture capital firm.",
+    scope: "Developed the site and maintained it afterward.",
+    collaborators: [keenan],
+    design: { label: "Paladar Studio" },
+  },
+];
+
+---
+
+<section class="page-section" id="web-development" aria-labelledby="web-development-h">
+  <div class="grid">
+    <div class="col-8">
+      <h2 id="web-development-h">1—Web Development</h2>
+      <div class="section-description">
+        <p>
+          I’ve been a professional web developer since 2014. My goal from the beginning has been to
+          build websites in the simplest way possible to achieve the vision of the designers who made
+          them, down to the smallest details and with high consistency. High performance and freedom
+          of customization are natural consequences of my approach of keeping things simple and
+          knowing every part of the system.
+        </p>
+        <p>
+          Sometimes, while implementing a design, we discover structural and visual problems based on
+          what the code looks like semantically; good design and good code go hand in hand.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-subsection" aria-labelledby="clients-h">
+    <div class="grid">
+      <div class="col-6">
+        <h3 id="clients-h">1.1—Websites for Clients</h3>
+        <p>
+          Most of my client work came through two long collaborations: with developer Keenan Payne,
+          and with the design studio Play. I built these sites from scratch, translating the designs
+          faithfully into code, and stayed on to maintain most of them afterward.
+        </p>
+      </div>
+    </div>
+
+    <ul class="clients grid">
+      {
+            clients.map((c) => (
+              <li class="col-6">
+                <h4>{c.url ? <a href={c.url}>{c.name}</a> : c.name}</h4>
+                <p>
+                  {c.what} {c.scope}
+                </p>
+                {(c.collaborators || c.design) && (
+                  <p class="credits">
+                    {c.collaborators && (
+                      <>
+                        With{" "}
+                        {withSeparators(c.collaborators).map((p) => (
+                          <>
+                            {p.sep}
+                            <a href={p.url}>{p.label}</a>
+                          </>
+                        ))}
+                        .{" "}
+                      </>
+                    )}
+                    {c.design && (
+                      <>
+                        Design by{" "}
+                        {c.design.url ? <a href={c.design.url}>{c.design.label}</a> : c.design.label}.
+                      </>
+                    )}
+                  </p>
+                )}
+              </li>
+            ))
+          }
+    </ul>
+
+    <p class="note">
+      Some of these sites have since been redesigned or replaced. Earlier versions are on the <a href="https://web.archive.org/">Wayback Machine</a>, and I can send links to specific snapshots on request.
+    </p>
+  </section>
+
+  <section class="page-subsection grid" aria-labelledby="concise-h">
+    <h3 id="concise-h"><a class="quiet" href="https://concisecss.com/">1.2—Concise CSS</a></h3>
+
+    <div class="col-6">
+      <p>
+        I started building my own CSS framework in 2014, then I found Concise CSS and noticed
+              that Keenan Payne and I had the same vision for it. In 2015 we merged the projects and
+              released it as a new, distinctive framework compared to the others available at the
+              time: native HTML elements with a normalized design good enough to be used on their
+              own, a collection of components with minimal design for easy customization, and utility
+              styles for rapid prototyping or component variations.
+      </p>
+      <p>
+        It included a grid system that was more intuitive because it used HTML attributes
+              instead of classes, which was unusual at the time, before element attributes became the
+              default way to attach data to components.
+      </p>
+      <p>
+        I led the typography-oriented design for the website, following the principles of the
+              framework; it was composed mostly of text and code samples. I wrote most of it, and
+              Keenan helped with editing and grammar corrections (I didn’t have much experience with
+              English yet).
+      </p>
+      <p>
+        The next version grew more ambitious and included its own PostCSS-based toolchain, which
+              let us define and auto-calculate custom units for font sizes and element spacing,
+              standardizing design systems before CSS custom properties had broad browser support.
+      </p>
+      <p>
+        Concise CSS was even included in some books about web development, including one by
+              Larry Ullman, the first author I read about web development as a teenager. The framework
+              is now an abandoned project, and I sincerely apologize to all the authors who
+              immortalized its name in their books. Hopefully the project will remain available for as
+              long as there are readers looking for it.
+      </p>
+      <p class="links">
+        <a href="https://github.com/concisecss">GitHub</a>
+        <a href="https://concisecss.com/">Website</a>
+      </p>
+    </div>
+
+    <div class="col-6">
+      <Figure src={conciseImage} alt="The Concise CSS documentation website" ratio="3 / 4" class="framed" />
+    </div>
+  </section>
+
+  <div class="page-subsection grid">
+    <section class="col-6" aria-labelledby="tufte-h">
+      <h3 id="tufte-h">1.3—Tufte CSS</h3>
+      <p>
+        I fixed how the side notes behave on mobile in this project, a drop-in stylesheet for
+            text-based websites inspired by the work of Edward Tufte. My contribution was not much, but
+            it was honest work: solving a problem they had with implementing their concept in CSS
+            alone.
+      </p>
+      <p class="links">
+        <a href="https://github.com/edwardtufte/tufte-css">GitHub</a>
+        <a href="https://edwardtufte.github.io/tufte-css/">Website</a>
+      </p>
+    </section>
+
+    <section class="col-6" aria-labelledby="archives-h">
+      <h3 id="archives-h">1.4—“The Lost Archives”</h3>
+      <p>
+        Before 2019 or so, I worked under the pseudonym “James Kolce” as an attempt to build a
+            distinctive brand. After a break, I started over from scratch using my real name and
+            removed most of my code from the web. Some traces remain on&nbsp;
+        <a href="https://www.npmjs.com/~jameskolce">NPM</a>, which at least shows I’ve been
+            programming (simple things) since 2014.
+      </p>
+    </section>
+  </div>
+</section>
+
+<style>
+.clients {
+  list-style: none;
+  margin-top: 10rem;
+  font-size: var(--text-size-5);
+  letter-spacing: 0.01em;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.note {
+  padding-left: var(--space-page-margin);
+  padding-right: var(--space-page-margin);
+  font-size: var(--text-size-5);
+  margin-top: 5rem;
+  text-align: right;
+  max-width: 50rem;
+  margin-left: auto;
+  font-style: italic;
+}
+
+.credits {
+  margin-top: 0;
+  color: var(--color-secondary);
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+
+.links {
+  a {
+    display: inline-block;
+  }
+
+  a + a {
+    margin-left: 2rem;
+  }
+}
+</style>

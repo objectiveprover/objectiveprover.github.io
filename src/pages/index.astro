@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "@/components/sections/Header.astro";
+import WebDevelopment from "@/components/sections/WebDevelopment.astro"
+import Design from "@/components/sections/Design.astro"
+import Programming from "@/components/sections/Programming.astro"
+import TechnicalWriting from "@/components/sections/TechnicalWriting.astro"
+import CognitiveDesigner from "@/components/sections/CognitiveDesigner.astro"
+
+const title = "Jaime Hernández—Cognitive Designer";
+const summary =
+  "I maintain systems to prevent them from drifting into chaos, rebuild them when they are beyond improvement, or build new ones when the problem justifies it; the purpose remains the same: things must be clear and easy to understand, both internally and externally—nothing extra, nothing missing.";
+
+const year = new Date().getFullYear();
+---
+
+<Base title={title} description={summary}>
+  <main id="main">
+    <Header
+      nav={[
+        { id: "web-development", label: "1—Web Development" },
+        { id: "design", label: "2—Design" },
+        { id: "programming", label: "3—Programming" },
+        { id: "technical-writing", label: "4—Technical Writing" },
+        { id: "cognitive-designer", label: "5—What Is a Cognitive Designer" },
+      ]}
+      description={summary}
+    />
+
+    <WebDevelopment />
+    <Design />
+    <Programming />
+    <TechnicalWriting />
+    <CognitiveDesigner />
+  </main>
+
+  <footer class="colophon">
+    <div>
+      <p class="copyright">Copyright {year}, Jaime Hernández</p>
+      <p class="built"><a href="https://github.com/objectiveprover/objectiveprover.github.io">Source on GitHub</a>.</p>
+    </div>
+    <a href="mailto:contact@jaime.one">Contact</a>
+  </footer>
+</Base>

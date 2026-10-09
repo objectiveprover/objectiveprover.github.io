@@ -1,0 +1,99 @@
+---
+import Figure from "@/components/Figure.astro";
+
+type Link = {
+  label: string;
+  url?: string;
+}
+
+import emacsImage from "@/assets/emacs.jpg";
+
+const petriEntries: Link[] = [
+  {
+    label: "Testing SCPI communication with an oscilloscope over a TCP socket in Clojure",
+    url: "https://github.com/objectiveprover/Petri/blob/master/3-scpi-tcp-connection.clj",
+  },
+  {
+    label: "Simple web template engine in TypeScript",
+    url: "https://github.com/objectiveprover/Petri/tree/master/5-web-templating-engine_ts",
+  },
+  {
+    label: "Executing commands at random intervals in Tcl",
+    url: "https://github.com/objectiveprover/Petri/blob/master/1-random-wait.tcl",
+  },
+  {
+    label: "Collection of “Hello, world” files in different languages",
+    url: "https://github.com/objectiveprover/Petri/tree/master/0-hello-world",
+  },
+];
+
+
+---
+
+<section id="programming" class="page-section" aria-labelledby="programming-h">
+
+  <div class="grid">
+    <div class="prose col-8">
+      <h2 id="programming-h">3—Programming</h2>
+      <p>
+        At the moment most of my programming is experimental, and the amount of public code is
+          minimal. I’m looking to expand my skills in different languages, especially live ones (which
+          can be modified while they run) like Lisp or Forth, but also high-integrity ones like
+          Ada/SPARK.
+      </p>
+    </div>
+  </div>
+
+  <section class="page-subsection grid" aria-labelledby="emacs-h">
+    <div class="col-6">
+      <h3 id="emacs-h">
+        <a class="quiet" href="https://github.com/objectiveprover/.emacs.d">3.1—The Minimalist Emacs</a>
+      </h3>
+      <p>
+        An Emacs configuration for a clear reading experience, with mostly grayscale colors over a
+            white background. My first experience programming in a Lisp.
+      </p>
+      <p class="links"><a href="https://github.com/objectiveprover/.emacs.d">See on GitHub</a></p>
+    </div>
+    <div class="col-6">
+      <Figure src={emacsImage} alt="Emacs Lisp code in my Emacs configuration" ratio="8 / 5" class="framed" />
+    </div>
+  </section>
+
+  <section class="page-subsection grid" aria-labelledby="petri-h">
+    <div class="col-6">
+      <h3 id="petri-h"><a class="quiet" href="https://github.com/objectiveprover/Petri">3.2—Petri</a></h3>
+      <p>
+        Programs that don’t belong in a large-scale project are stored in this repository, usually
+            as single files to try an idea or test an algorithm implementation.
+      </p>
+      <p class="links"><a href="https://github.com/objectiveprover/Petri">See on GitHub</a></p>
+    </div>
+    <div class="col-6">
+      <h4 class="list-heading">Some examples:</h4>
+      <ol class="titles">
+        {petriEntries.map((e) => <li><a href={e.url}>{e.label}</a></li>)}
+      </ol>
+    </div>
+  </section>
+</section>
+
+<style>
+.titles {
+  margin-top: 2rem;
+  padding-left: 3rem;
+  font-style: italic;
+  font-size: 2rem;
+  line-height: 1.6;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.list-heading {
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: var(--text-size-6);
+}
+</style>

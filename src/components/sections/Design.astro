@@ -1,0 +1,134 @@
+---
+import Figure from "@/components/Figure.astro";
+import safariExtensionImage from "@/assets/safari_extension.jpg";
+
+type Link = {
+  label: string;
+  url?: string;
+}
+
+const books = [
+  {
+    title: "White Nights",
+    author: "Fyodor Dostoevsky",
+    cover: whiteNightsImage,
+    url: "https://objectiveink.gumroad.com/l/whitenights",
+    alt: "Cover and interior spread of my edition of White Nights",
+  },
+  {
+    title: "The Sorrows of Young Werther",
+    author: "Johann Wolfgang von Goethe",
+    cover: wertherImage,
+    url: "https://objectiveink.gumroad.com/l/werther",
+    alt: "Cover and interior spread of my edition of The Sorrows of Young Werther",
+  },
+];
+
+import wertherImage from "@/assets/werther.jpg";
+import whiteNightsImage from "@/assets/whitenights.jpg";
+
+---
+
+<section id="design" class="page-section" aria-labelledby="design-h">
+  <div class="grid">
+    <div class="col-8">
+      <h2 id="design-h">2—Design</h2>
+
+      <p>
+        How can I build good things if I only know how to code? I started improving myself as a
+          designer so I could do things on my own, from conceptualization to release, and make sure
+          they look good.
+      </p>
+      <p>
+        With enough experience, I realized that code must represent structurally what design is
+          semantically. The unification of code and design opens a different level of thinking that
+          can be defined as systems thinking, and with enough work and effort, it can be applied as a
+          broad skill set to product design.
+      </p>
+    </div>
+  </div>
+
+  <section class="page-subsection" aria-labelledby="minimalist-h">
+    <div class="grid">
+      <div class="col-6">
+        <h3 id="minimalist-h">2.1—Minimalist Design</h3>
+        <p>
+          An experimental Safari extension written in Swift and JavaScript that modifies the design
+            of websites to fit my taste: typography-oriented, no ornamentation, only what’s necessary
+            to make the content the main subject and as legible as possible.
+        </p>
+        <p>Currently on hold, but I’ll upgrade it soon and port it to Chrome too.</p>
+        <p>
+          <a href="https://apps.apple.com/us/app/minimalist-design/id6765779070?mt=12">See on the App Store</a>
+        </p>
+      </div>
+      <div class="col-6">
+        <Figure
+          src={safariExtensionImage}
+          alt="The CTAN page for the microtype package, restyled by the Minimalist Design extension"
+          ratio="8 / 5"
+          class="offset"
+        >
+          See the <a href="https://ctan.org/pkg/microtype" target="_blank">original page</a> for the example shown in this picture.
+        </Figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-subsection" aria-labelledby="typography-h">
+
+    <div class="grid">
+      <div class="col-6">
+        <h3 id="typography-h">2.2—Typography</h3>
+        <p>
+          I’ve taken public domain books and designed my own editions to make them more enjoyable to
+            read and give them the typographical treatment they deserve, making the design reflect the
+            tone of the stories. Both the interiors and the covers are my design. I plan to release more
+            books eventually.
+        </p>
+      </div>
+    </div>
+
+    <ul class="books grid">
+      {
+            books.map((b) => (
+              <li class="book col-6">
+                <Figure src={b.cover} alt={b.alt} ratio="16 / 9" />
+                <h4><a href={b.url}>{b.title}</a></h4>
+                <p class="author">{b.author}</p>
+                <p class="purchase"><a href={b.url}>Purchase on Gumroad</a></p>
+              </li>
+            ))
+          }
+    </ul>
+  </section>
+</section>
+
+<style>
+.books {
+  list-style: none;
+}
+
+.book {
+  a {
+    text-decoration: none;
+  }
+}
+
+.author {
+  font-size: var(--text-size-5);
+  letter-spacing: 0.02em;
+}
+
+h4 {
+  margin-top: 1.5rem;
+}
+
+.purchase {
+  margin-top: 1.5rem;
+
+  a {
+    text-decoration: underline;
+  }
+}
+</style>

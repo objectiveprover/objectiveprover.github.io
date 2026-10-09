@@ -1,0 +1,138 @@
+---
+
+type Link = {
+  label: string;
+  url?: string;
+}
+
+type ArticleGroup = {
+  title: string;
+  publication: string;
+  articles: Link[];
+}
+
+const articleGroups: ArticleGroup[] = [
+  {
+    title: "Functional Programming with Elm",
+    publication: "Series published by CSS-Tricks in 2017",
+    articles: [
+      {
+        label: "Why Elm? (And How to Get Started with It)",
+        url: "https://css-tricks.com/elm-get-started/"
+      },
+      {
+        label: "Introduction to the Elm Architecture and How to Build Our First Application",
+        url: "https://css-tricks.com/introduction-elm-architecture-build-first-application/",
+      },
+      {
+        label: "The Structure of an Elm Application",
+        url: "https://css-tricks.com/structure-elm-application/"
+      },
+    ],
+  },
+  {
+    title: "General JavaScript",
+    publication: "Published by SitePoint from 2017 to 2020",
+    articles: [
+      { label: "Create Your Own Yeoman-Style Scaffolding Tool with Caporal.js", url: "https://www.sitepoint.com/scaffolding-tool-caporal-js/" },
+      { label: "KeystoneJS: The Best Node.js Alternative to WordPress", url: "https://www.sitepoint.com/keystonejs-best-node-js-alternative-wordpress/" },
+      { label: "The Anatomy of a Modern JavaScript Application", url: "https://www.sitepoint.com/anatomy-of-a-modern-javascript-application/" },
+      { label: "10 Languages That Compile to JavaScript", url: "https://www.sitepoint.com/10-languages-compile-javascript/" },
+      { label: "A Beginner’s Guide to Babel", url: "https://www.sitepoint.com/babel-beginners-guide/" },
+      { label: "How to Build Runnable JavaScript Specifications", url: "https://www.sitepoint.com/runnable-javascript-specifications/" },
+      { label: "How to Build and Structure a Node.js MVC Application", url: "https://www.sitepoint.com/node-js-mvc-application/" },
+    ],
+  },
+  {
+    title: "Server-related",
+    publication: "Published by DigitalOcean in 2017",
+    articles: [
+      {
+        label: "How To Deploy a Node.js and MongoDB Application with Rancher on Ubuntu 16.04",
+        url: "https://www.digitalocean.com/community/tutorials/how-to-deploy-a-node-js-and-mongodb-application-with-rancher-on-ubuntu-16-04",
+      },
+      {
+        label: "How To Secure Your Rancher Web App with Let’s Encrypt on Ubuntu 16.04",
+        url: "https://www.digitalocean.com/community/tutorials/how-to-secure-your-rancher-web-app-with-let-s-encrypt-on-ubuntu-16-04",
+      },
+    ],
+  },
+];
+
+const bookAppearances: Link[] = [
+  { label: "Node.js: The Collection", url: "https://www.goodreads.com/book/show/43108905-node-js" },
+  { label: "9 Practical Node.js Projects", url: "https://www.goodreads.com/book/show/43212055-9-practical-node-js-projects" },
+  { label: "Modern JavaScript Tools & Skills", url: "https://www.goodreads.com/book/show/40554234-modern-javascript-tools-skills" },
+  { label: "Your First Week With Node.js", url: "https://www.goodreads.com/book/show/124958116-your-first-week-with-node-js" },
+  { label: "Modern JavaScript", url: "https://www.goodreads.com/book/show/36166276-modern-javascript" },
+  { label: "The Modern JavaScript Collection", url: "https://www.goodreads.com/book/show/40415091-the-modern-javascript-collection" },
+  { label: "JavaScript: Best Practice", url: "https://www.goodreads.com/book/show/40770590-javascript" },
+];
+
+
+---
+
+<section id="technical-writing" class="page-section" aria-labelledby="technical-writing-h">
+  <div class="grid">
+    <div class="col-8">
+      <h2 id="technical-writing-h">4—Technical Writing</h2>
+
+      <p>
+        I briefly worked as a technical writer from 2017 to 2020, writing about web development. Note that these articles might be outdated or contain factual mistakes that weren't caught during publication.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div>
+      {
+        articleGroups.map((g) => (
+          <div class="group">
+            <h3>{g.title} <span class="subtitle">{g.publication}</span></h3>
+
+            <ol class="titles">
+              {g.articles.map((a) => (
+                <li>{a.url ? <a href={a.url}>{a.label}</a> : <cite>{a.label}</cite>}</li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
+
+      <div class="group">
+        <h3>Appearances in Books
+          <span class="subtitle">Note: I don’t own the copyright on these books and had no control over their publication.</span>
+        </h3>
+
+        <ol class="titles">
+          {bookAppearances.map((b) => <li><a href={b.url}>{b.label}</a></li>)}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.titles {
+  padding-left: 5rem;
+  margin-top: 2rem;
+
+  a {
+    text-decoration: none;
+    font-style: italic;
+  }
+}
+
+.group {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+h3 {
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  color: var(--color-secondary);
+}
+</style>

@@ -1,0 +1,84 @@
+---
+import coverImage from "@/assets/cover.jpg";
+import Figure from "@/components/Figure.astro";
+
+type navLink = {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  nav: navLink[];
+  description: string;
+}
+
+const { nav, description } = Astro.props;
+
+---
+
+<header class="header">
+  <div class="top">
+    <h1>Jaime Hernández <span class="job-title">Cognitive Designer</span></h1>
+    <a href="mailto:contact@jaime.one">Contact</a>
+  </div>
+
+  <div class="grid">
+    <nav class="col-6" aria-labelledby="nav-label">
+      <p id="nav-label" class="nav-label">Navigate to:</p>
+      <ul class="toc">
+        {nav.map((s) => <li><a href={`#${s.id}`}>{s.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="col-6">
+      <p><span class="small-caps">I am a cognitive designer.</span> {description}</p>
+    </div>
+  </div>
+
+  <div class="figure">
+    <Figure src={coverImage} alt="Drawing of my electronics lab" ratio="3 / 2" eager class="lab">
+      A picture of my lab. There’s nothing like exploring design in physical systems, where the
+      constraints are stricter and more complex, dictated by both humans and the laws of physics.
+      It brings a new and more objective perspective to my work in digital design.
+    </Figure>
+  </div>
+</header>
+
+<style>
+.header {
+  margin-bottom: var(--space-section);
+}
+
+.top {
+  padding: 5rem var(--space-page-margin);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rem;
+}
+
+.job-title {
+  display: block;
+  font-size: var(--text-size-3);
+  font-weight: normal;
+}
+
+.toc {
+  list-style: none;
+  line-height: 1.6;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.nav-label {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.figure {
+  margin-top: 10rem;
+  margin-right: var(--space-page-margin);
+  margin-left: var(--space-page-margin);
+}
+</style>

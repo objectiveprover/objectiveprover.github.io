@@ -1,0 +1,235 @@
+:root {
+    font-size: 10px; /* Makes rem units more intuitive to use */
+    --font-family: "Archivo Variable", "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --color-text: #111;
+    --color-secondary: #777;
+    --text-size-6: 2rem;
+    --text-size-5: clamp(1.25rem, 1.1rem + 0.6vw, 1.8rem);
+    --text-size-4: clamp(1.375rem, 1.2rem + 0.8vw, 2.7rem);
+    --text-size-3: clamp(1.75rem, 1.3rem + 1.8vw, 3.2rem);
+    --text-size-2: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+    --text-size-1: clamp(2.25rem, 1.6rem + 2.6vw, 6.4rem);
+    --space-section: clamp(4.5rem, 3rem + 6vw, 8rem);
+    --space-page-margin: 2vw;
+    --page-width: 130rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove blurry "bold" appearance of text on retina displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+screen and (min-resolution: 2dppx) {
+    *, *::before, *::after {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr)); /* minmax() keeps the columns the same size independently of the content */
+    grid-gap: var(--space-page-margin);
+    padding-left: var(--space-page-margin);
+    padding-right: var(--space-page-margin);
+
+    & > * {
+        grid-column: 1 / -1; /* Elements span all columns by default */
+    }
+
+    .col-6 {
+        grid-column: auto / span 6;
+    }
+
+    .col-8 {
+        grid-column: auto / span 8;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid > * {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: 2.2rem;
+    line-height: 1.5;
+    max-width: var(--page-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: var(--text-size-1);
+}
+
+h2 {
+    font-size: var(--text-size-2);
+    margin-bottom: 5rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+}
+
+h3 {
+    font-size: var(--text-size-3);
+    margin-bottom: 4rem;
+    font-weight: 500;
+
+    .subtitle {
+        display: block;
+        font-size: var(--text-size-5);
+        letter-spacing: 0.01em;
+    }
+}
+
+h4 {
+    font-size: var(--text-size-4);
+    font-weight: 500;
+}
+
+h5 {
+    font-size: var(--text-size-5);
+}
+
+h6 {
+    font-size: var(--text-size-6);
+}
+
+p,
+ul,
+ol {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    hyphens: auto;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+}
+
+/* Never justify these */
+h1, h2, h3, h4, figcaption, pre, td, th, li {
+  text-align: start;
+}
+
+p + p {
+    margin-top: 1.5em;
+}
+
+em,
+cite {
+    font-style: italic;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 0.24em;
+}
+
+a:hover {
+    text-decoration: underline !important;
+    text-decoration-color: currentColor;
+}
+
+a.quiet {
+    text-decoration-line: none;
+}
+
+a.quiet:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.055em;
+    text-decoration-color: currentColor;
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 1px;
+}
+
+.page-section {
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+    position: relative;
+    padding-top: 2rem;
+
+    &::before {
+        content: "";
+        background-color: black;
+        height: 5px;
+        position: absolute;
+        top: 0;
+        right: var(--space-page-margin);
+        left: var(--space-page-margin);
+    }
+}
+
+.page-subsection {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    position: relative;
+    padding-top: 1.5rem;
+
+    &::before {
+        content: "";
+        background-color: black;
+        height: 3px;
+        position: absolute;
+        top: 0;
+        right: var(--space-page-margin);
+        left: var(--space-page-margin);
+    }
+}
+
+.small-caps {
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
+    font-weight: 450;
+}
+
+.figure {
+    margin-top: 2rem;
+}
+
+.figure figcaption {
+    line-height: 1.3;
+    text-align: right;
+    font-size: var(--text-size-5);
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    max-width: max(50%, 10rem);
+    margin-left: auto;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+.colophon {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-m);
+    font-size: var(--text-size-5);
+    padding-left: var(--space-page-margin);
+    padding-right: var(--space-page-margin);
+    margin-bottom: 10rem;
+}
+
+.copyright {
+    font-weight: 500;
+}
