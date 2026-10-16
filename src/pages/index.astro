@@ -8,12 +8,11 @@ import TechnicalWriting from "@/components/sections/TechnicalWriting.astro"
 import CognitiveDesigner from "@/components/sections/CognitiveDesigner.astro"
 
 const title = "Jaime Hernández—Cognitive Designer";
-const summary = "";
 
 const year = new Date().getFullYear();
 ---
 
-<Base title={title} description={summary}>
+<Base title={title}>
   <main id="main" class="container">
     <Header
       nav={[
@@ -23,7 +22,6 @@ const year = new Date().getFullYear();
         { id: "technical-writing", label: "4—Technical Writing" },
         { id: "cognitive-designer", label: "5—What Is a Cognitive Designer" },
       ]}
-      description={summary}
     />
 
     <WebDevelopment />
