@@ -18,20 +18,24 @@ const { nav, description } = Astro.props;
 
 <header class="header">
   <div class="top">
-    <h1>Jaime Hernández <span class="job-title">Cognitive Designer</span></h1>
-    <a href="mailto:contact@jaime.one">Contact</a>
+    <h1>Jaime Hernández <span class="subtitle">Cognitive Designer</span></h1>
+    <a class="contact-link" href="mailto:contact@jaime.one">Contact</a>
   </div>
 
   <div class="grid">
     <nav class="col-6" aria-labelledby="nav-label">
-      <p id="nav-label" class="nav-label">Navigate to:</p>
+      <p id="nav-label" class="nav-label small-caps">Navigate to:</p>
       <ul class="toc">
         {nav.map((s) => <li><a href={`#${s.id}`}>{s.label}</a></li>)}
       </ul>
     </nav>
 
     <div class="col-6">
-      <p><span class="small-caps">I am a cognitive designer.</span> {description}</p>
+      <p>I build and organize systems according to the capacities of the <em>human</em> mind.</p>
+      <p>I design and develop clear websites and applications. In programming, I focus on creating tools and reducing complexity. I write about ideas using first principles, and typeset books to make them easier to read.</p>
+
+      <p>My work is about both design and implementation. Things must be clear and easy to understand, with nothing extra and nothing missing.</p>
+
     </div>
   </div>
 
@@ -46,20 +50,18 @@ const { nav, description } = Astro.props;
 
 <style>
 .header {
-  margin-bottom: var(--space-section);
+  margin-top: var(--space-xl);
 }
 
 .top {
-  padding: 5rem var(--space-page-margin);
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30rem;
+  margin-bottom: var(--space-4xl);
 }
 
-.job-title {
-  display: block;
-  font-size: var(--text-size-3);
-  font-weight: normal;
+.contact-link {
+  text-decoration: none;
+  margin-top: 1em;
 }
 
 .toc {
@@ -72,7 +74,6 @@ const { nav, description } = Astro.props;
 }
 
 .nav-label {
-  font-style: italic;
   margin-bottom: 1.5rem;
 }
 

@@ -49,9 +49,9 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
   </div>
 
   <section class="page-subsection" aria-labelledby="minimalist-h">
+    <h3 id="minimalist-h">2.1—Minimalist Design</h3>
     <div class="grid">
       <div class="col-6">
-        <h3 id="minimalist-h">2.1—Minimalist Design</h3>
         <p>
           An experimental Safari extension written in Swift and JavaScript that modifies the design
             of websites to fit my taste: typography-oriented, no ornamentation, only what’s necessary
@@ -76,10 +76,9 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
   </section>
 
   <section class="page-subsection" aria-labelledby="typography-h">
-
+    <h3 id="typography-h">2.2—Typography</h3>
     <div class="grid">
       <div class="col-6">
-        <h3 id="typography-h">2.2—Typography</h3>
         <p>
           I’ve taken public domain books and designed my own editions to make them more enjoyable to
             read and give them the typographical treatment they deserve, making the design reflect the
@@ -94,7 +93,7 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
             books.map((b) => (
               <li class="book col-6">
                 <Figure src={b.cover} alt={b.alt} ratio="16 / 9" />
-                <h4><a href={b.url}>{b.title}</a></h4>
+                <h4 class="book-title"><a href={b.url}>{b.title}</a></h4>
                 <p class="author">{b.author}</p>
                 <p class="purchase"><a href={b.url}>Purchase on Gumroad</a></p>
               </li>
@@ -107,6 +106,7 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
 <style>
 .books {
   list-style: none;
+  margin-top: var(--space-xl);
 }
 
 .book {
@@ -115,13 +115,13 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
   }
 }
 
-.author {
-  font-size: var(--text-size-5);
-  letter-spacing: 0.02em;
+.book-title {
+  margin-top: var(--space-s);
+  margin-bottom: 0.1em;
 }
 
-h4 {
-  margin-top: 1.5rem;
+.author {
+  font-size: var(--font-size-0);
 }
 
 .purchase {

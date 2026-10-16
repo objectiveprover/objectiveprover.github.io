@@ -130,9 +130,10 @@ const clients: Client[] = [
 ---
 
 <section class="page-section" id="web-development" aria-labelledby="web-development-h">
+  <h2 id="web-development-h">1—Web Development</h2>
+
   <div class="grid">
     <div class="col-8">
-      <h2 id="web-development-h">1—Web Development</h2>
       <div class="section-description">
         <p>
           I’ve been a professional web developer since 2014. My goal from the beginning has been to
@@ -150,9 +151,10 @@ const clients: Client[] = [
   </div>
 
   <section class="page-subsection" aria-labelledby="clients-h">
+    <h3 id="clients-h">1.1—Websites for Clients</h3>
+
     <div class="grid">
       <div class="col-6">
-        <h3 id="clients-h">1.1—Websites for Clients</h3>
         <p>
           Most of my client work came through two long collaborations: with developer Keenan Payne,
           and with the design studio Play. I built these sites from scratch, translating the designs
@@ -164,7 +166,7 @@ const clients: Client[] = [
     <ul class="clients grid">
       {
             clients.map((c) => (
-              <li class="col-6">
+              <li class="col-6 client">
                 <h4>{c.url ? <a href={c.url}>{c.name}</a> : c.name}</h4>
                 <p>
                   {c.what} {c.scope}
@@ -201,54 +203,56 @@ const clients: Client[] = [
     </p>
   </section>
 
-  <section class="page-subsection grid" aria-labelledby="concise-h">
-    <h3 id="concise-h"><a class="quiet" href="https://concisecss.com/">1.2—Concise CSS</a></h3>
+  <section class="page-subsection" aria-labelledby="concise-h">
+    <h3 id="concise-h">1.2—Concise CSS</h3>
 
-    <div class="col-6">
-      <p>
-        I started building my own CSS framework in 2014, then I found Concise CSS and noticed
+    <div class="grid">
+      <div class="col-6">
+        <p>
+          I started building my own CSS framework in 2014, then I found Concise CSS and noticed
               that Keenan Payne and I had the same vision for it. In 2015 we merged the projects and
               released it as a new, distinctive framework compared to the others available at the
               time: native HTML elements with a normalized design good enough to be used on their
               own, a collection of components with minimal design for easy customization, and utility
               styles for rapid prototyping or component variations.
-      </p>
-      <p>
-        It included a grid system that was more intuitive because it used HTML attributes
+        </p>
+        <p>
+          It included a grid system that was more intuitive because it used HTML attributes
               instead of classes, which was unusual at the time, before element attributes became the
               default way to attach data to components.
-      </p>
-      <p>
-        I led the typography-oriented design for the website, following the principles of the
+        </p>
+        <p>
+          I led the typography-oriented design for the website, following the principles of the
               framework; it was composed mostly of text and code samples. I wrote most of it, and
               Keenan helped with editing and grammar corrections (I didn’t have much experience with
               English yet).
-      </p>
-      <p>
-        The next version grew more ambitious and included its own PostCSS-based toolchain, which
+        </p>
+        <p>
+          The next version grew more ambitious and included its own PostCSS-based toolchain, which
               let us define and auto-calculate custom units for font sizes and element spacing,
               standardizing design systems before CSS custom properties had broad browser support.
-      </p>
-      <p>
-        Concise CSS was even included in some books about web development, including one by
+        </p>
+        <p>
+          Concise CSS was even included in some books about web development, including one by
               Larry Ullman, the first author I read about web development as a teenager. The framework
               is now an abandoned project, and I sincerely apologize to all the authors who
               immortalized its name in their books. Hopefully the project will remain available for as
               long as there are readers looking for it.
-      </p>
-      <p class="links">
-        <a href="https://github.com/concisecss">GitHub</a>
-        <a href="https://concisecss.com/">Website</a>
-      </p>
-    </div>
+        </p>
+        <p class="links">
+          <a href="https://github.com/concisecss">GitHub</a>
+          <a href="https://concisecss.com/">Website</a>
+        </p>
+      </div>
 
-    <div class="col-6">
-      <Figure src={conciseImage} alt="The Concise CSS documentation website" ratio="3 / 4" class="framed" />
+      <div class="col-6">
+        <Figure src={conciseImage} alt="The Concise CSS documentation website" ratio="3 / 4" class="framed" />
+      </div>
     </div>
   </section>
 
-  <div class="page-subsection grid">
-    <section class="col-6" aria-labelledby="tufte-h">
+  <div class="grid">
+    <section class="page-subsection col-6" aria-labelledby="tufte-h">
       <h3 id="tufte-h">1.3—Tufte CSS</h3>
       <p>
         I fixed how the side notes behave on mobile in this project, a drop-in stylesheet for
@@ -262,7 +266,7 @@ const clients: Client[] = [
       </p>
     </section>
 
-    <section class="col-6" aria-labelledby="archives-h">
+    <section class="page-subsection col-6" aria-labelledby="archives-h">
       <h3 id="archives-h">1.4—“The Lost Archives”</h3>
       <p>
         Before 2019 or so, I worked under the pseudonym “James Kolce” as an attempt to build a
@@ -278,9 +282,8 @@ const clients: Client[] = [
 <style>
 .clients {
   list-style: none;
-  margin-top: 10rem;
-  font-size: var(--text-size-5);
-  letter-spacing: 0.01em;
+  margin-top: var(--space-2xl);
+  row-gap: var(--space-xl);
 
   a {
     text-decoration: none;
@@ -288,21 +291,19 @@ const clients: Client[] = [
 }
 
 .note {
-  padding-left: var(--space-page-margin);
-  padding-right: var(--space-page-margin);
-  font-size: var(--text-size-5);
-  margin-top: 5rem;
+  font-size: var(--font-size--1);
+  margin-top: var(--space-2xl);
   text-align: right;
-  max-width: 50rem;
+  max-width: 50ch;
   margin-left: auto;
   font-style: italic;
 }
 
 .credits {
   margin-top: 0;
-  color: var(--color-secondary);
-  font-size: 1.6rem;
-  margin-top: 0.5rem;
+  font-size: var(--font-size--1);
+  margin-top: 1em;
+  letter-spacing: 0.01em;
 }
 
 .links {

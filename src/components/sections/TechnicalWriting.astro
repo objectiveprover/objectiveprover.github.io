@@ -88,25 +88,25 @@ const bookAppearances: Link[] = [
       {
         articleGroups.map((g) => (
           <div class="group">
-            <h3>{g.title} <span class="subtitle">{g.publication}</span></h3>
+            <h3 class="publication-title">{g.title} <span class="subtitle">{g.publication}</span></h3>
 
-            <ol class="titles">
+            <ul class="titles">
               {g.articles.map((a) => (
                 <li>{a.url ? <a href={a.url}>{a.label}</a> : <cite>{a.label}</cite>}</li>
               ))}
-            </ol>
+            </ul>
           </div>
         ))
       }
 
       <div class="group">
-        <h3>Appearances in Books
-          <span class="subtitle">Note: I don’t own the copyright on these books and had no control over their publication.</span>
+        <h3 class="publication-title">Appearances in Books
+          <span class="subtitle">Note: I don’t own the copyright on these books</span>
         </h3>
 
-        <ol class="titles">
+        <ul class="titles">
           {bookAppearances.map((b) => <li><a href={b.url}>{b.label}</a></li>)}
-        </ol>
+        </ul>
       </div>
     </div>
   </div>
@@ -114,25 +114,34 @@ const bookAppearances: Link[] = [
 
 <style>
 .titles {
-  padding-left: 5rem;
-  margin-top: 2rem;
+  padding-left: 1em;
+  margin-top: 1em;
+  list-style: none;
 
   a {
     text-decoration: none;
     font-style: italic;
   }
+
+  li + li {
+   margin-top: 0.25em;
+  }
 }
 
-.group {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-h3 {
-  margin-bottom: 2rem;
+.publication-title {
+  font-size: var(--font-size-1);
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
-  color: var(--color-secondary);
+  font-size: var(--font-size--1);
+  margin-top: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.group {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
 }
 </style>

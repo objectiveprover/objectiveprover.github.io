@@ -1,17 +1,44 @@
 :root {
-    font-size: 10px; /* Makes rem units more intuitive to use */
-    --font-family: "Archivo Variable", "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --color-text: #111;
-    --color-secondary: #777;
-    --text-size-6: 2rem;
-    --text-size-5: clamp(1.25rem, 1.1rem + 0.6vw, 1.8rem);
-    --text-size-4: clamp(1.375rem, 1.2rem + 0.8vw, 2.7rem);
-    --text-size-3: clamp(1.75rem, 1.3rem + 1.8vw, 3.2rem);
-    --text-size-2: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
-    --text-size-1: clamp(2.25rem, 1.6rem + 2.6vw, 6.4rem);
-    --space-section: clamp(4.5rem, 3rem + 6vw, 8rem);
-    --space-page-margin: 2vw;
-    --page-width: 130rem;
+    /*******************************************************************************
+     Fonts
+     The name of the font comes from the Astro config
+                                                                                  */
+    --font-family-body: var(--font--swiza), sans-serif;
+
+    --font-size--1: clamp(0.9375rem, 0.9254rem + 0.0537vw, 0.9724rem);
+    --font-size-0: clamp(1.125rem, 1.0385rem + 0.3846vw, 1.375rem);
+    --font-size-1: clamp(1.35rem, 1.1443rem + 0.9142vw, 1.9443rem);
+    --font-size-2: clamp(1.62rem, 1.2291rem + 1.7372vw, 2.7492rem);
+    --font-size-3: clamp(1.944rem, 1.2713rem + 2.9897vw, 3.8873rem);
+    --font-size-4: clamp(2.3328rem, 1.2376rem + 4.8675vw, 5.4967rem);
+
+    /*******************************************************************************
+     Grid
+                                                                                  */
+    --grid-max-width: 85.25rem;
+    --grid-gutter: var(--space-s-l, clamp(1.125rem, 0.5554rem + 2.5743vw, 2.75rem));
+    --grid-columns: 12;
+
+    /*******************************************************************************
+     Responsive space lengths courtesy of utopia.fyi
+                                                                                  */
+    --space-xs: clamp(0.875rem, 0.8101rem + 0.2885vw, 1.0625rem);
+    --space-s: clamp(1.125rem, 1.0385rem + 0.3846vw, 1.375rem);
+    --space-m: clamp(1.6875rem, 1.5577rem + 0.5769vw, 2.0625rem);
+    --space-l: clamp(2.25rem, 2.0769rem + 0.7692vw, 2.75rem);
+    --space-xl: clamp(3.375rem, 3.1154rem + 1.1538vw, 4.125rem);
+    --space-2xl: clamp(4.5rem, 4.1538rem + 1.5385vw, 5.5rem);
+    --space-3xl: clamp(6.75rem, 6.2308rem + 2.3077vw, 8.25rem);
+    --space-4xl: clamp(9rem, 8.3077rem + 3.0769vw, 11rem);
+
+    /* One-up pairs */
+    --space-xs-s: clamp(0.875rem, 0.7019rem + 0.7692vw, 1.375rem);
+    --space-s-m: clamp(1.125rem, 0.8005rem + 1.4423vw, 2.0625rem);
+    --space-m-l: clamp(1.6875rem, 1.3197rem + 1.6346vw, 2.75rem);
+    --space-l-xl: clamp(2.25rem, 1.601rem + 2.8846vw, 4.125rem);
+    --space-xl-2xl: clamp(3.375rem, 2.6394rem + 3.2692vw, 5.5rem);
+    --space-2xl-3xl: clamp(4.5rem, 3.2019rem + 5.7692vw, 8.25rem);
+    --space-3xl-4xl: clamp(6.75rem, 5.2788rem + 6.5385vw, 11rem);
 }
 
 *,
@@ -31,12 +58,16 @@ screen and (min-resolution: 2dppx) {
     }
 }
 
+.container {
+    max-width: var(--grid-max-width);
+    padding-inline: var(--grid-gutter);
+    margin-inline: auto;
+}
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr)); /* minmax() keeps the columns the same size independently of the content */
-    grid-gap: var(--space-page-margin);
-    padding-left: var(--space-page-margin);
-    padding-right: var(--space-page-margin);
+    gap: var(--grid-gutter);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
 
     & > * {
         grid-column: 1 / -1; /* Elements span all columns by default */
@@ -51,74 +82,63 @@ screen and (min-resolution: 2dppx) {
     }
 }
 
-@media (max-width: 600px) {
-    .grid > * {
-        grid-column: 1 / -1 !important;
-    }
+body {
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-0);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
 }
 
-body {
-    margin: 0;
-    font-family: var(--font-family);
-    font-size: 2.2rem;
-    line-height: 1.5;
-    max-width: var(--page-width);
-    margin-left: auto;
-    margin-right: auto;
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
 }
 
 h1 {
-    font-size: var(--text-size-1);
-}
-
-h2 {
-    font-size: var(--text-size-2);
-    margin-bottom: 5rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-}
-
-h3 {
-    font-size: var(--text-size-3);
-    margin-bottom: 4rem;
-    font-weight: 500;
+    font-size: var(--font-size-4);
+    font-weight: 600;
+    letter-spacing: -0.02em;
 
     .subtitle {
         display: block;
-        font-size: var(--text-size-5);
+        font-size: var(--font-size-1);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+    }
+}
+
+h2 {
+    font-size: var(--font-size-3);
+    margin-bottom: var(--space-xl);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    font-size: var(--font-size-2);
+    margin-bottom: var(--space-l);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    .subtitle {
+        display: block;
+        font-size: var(--font-size-5);
         letter-spacing: 0.01em;
     }
 }
 
 h4 {
-    font-size: var(--text-size-4);
+    font-size: var(--font-size-1);
     font-weight: 500;
+    margin-bottom: 0.4em;
+    letter-spacing: -0.02em;
 }
 
 h5 {
-    font-size: var(--text-size-5);
+    font-size: var(--font-size-0);
 }
 
 h6 {
-    font-size: var(--text-size-6);
-}
-
-p,
-ul,
-ol {
-    margin: 0;
-}
-
-p {
-    margin: 0;
-    hyphens: auto;
-    text-wrap: pretty;
-    overflow-wrap: break-word;
-}
-
-/* Never justify these */
-h1, h2, h3, h4, figcaption, pre, td, th, li {
-  text-align: start;
+    font-size: var(--font-size--1);
 }
 
 p + p {
@@ -146,22 +166,6 @@ a:hover {
     text-decoration-color: currentColor;
 }
 
-a.quiet {
-    text-decoration-line: none;
-}
-
-a.quiet:hover {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.055em;
-    text-decoration-color: currentColor;
-}
-
-:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 3px;
-    border-radius: 1px;
-}
-
 .page-section {
     margin-top: 15rem;
     margin-bottom: 15rem;
@@ -171,46 +175,35 @@ a.quiet:hover {
     &::before {
         content: "";
         background-color: black;
-        height: 5px;
+        height: 8px;
         position: absolute;
         top: 0;
-        right: var(--space-page-margin);
-        left: var(--space-page-margin);
+        right: 0;
+        left: 0;
     }
 }
 
 .page-subsection {
-    margin-top: 10rem;
-    margin-bottom: 10rem;
+    margin-top: var(--space-3xl);
     position: relative;
-    padding-top: 1.5rem;
 
-    &::before {
-        content: "";
-        background-color: black;
-        height: 3px;
-        position: absolute;
-        top: 0;
-        right: var(--space-page-margin);
-        left: var(--space-page-margin);
+    h3 {
+        border-top: 5px solid black;
+        padding-top: 0.4em;
     }
 }
 
 .small-caps {
-    text-transform: uppercase;
-    font-size: 0.85em;
-    letter-spacing: 0.05em;
-    font-weight: 450;
-}
-
-.figure {
-    margin-top: 2rem;
+    font-variant: all-small-caps;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    font-size: 1.2em;
 }
 
 .figure figcaption {
     line-height: 1.3;
     text-align: right;
-    font-size: var(--text-size-5);
+    font-size: var(--font-size--1);
     letter-spacing: 0.02em;
     font-weight: 400;
     max-width: max(50%, 10rem);
@@ -223,11 +216,8 @@ a.quiet:hover {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: var(--space-m);
     font-size: var(--text-size-5);
-    padding-left: var(--space-page-margin);
-    padding-right: var(--space-page-margin);
-    margin-bottom: 10rem;
+    margin-bottom: var(--space-3xl);
 }
 
 .copyright {
