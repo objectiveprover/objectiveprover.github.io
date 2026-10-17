@@ -3,6 +3,9 @@ import { defineConfig, fontProviders } from "astro/config";
 export default defineConfig({
   site: "https://jaime.one",
   outDir: './docs',
+  build: {
+    assets: 'assets'
+  },
   fonts: [{
     provider: fontProviders.local(),
     name: "Swiza",
