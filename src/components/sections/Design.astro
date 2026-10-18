@@ -51,6 +51,16 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
     <h3 id="minimalist-h">2.1—Minimalist Design</h3>
     <div class="grid">
       <div class="col-6">
+        <Figure
+          src={safariExtensionImage}
+          alt="The CTAN page for the microtype package, restyled by the Minimalist Design extension"
+          ratio="8 / 5"
+          class="offset"
+        >
+          See the <a href="https://ctan.org/pkg/microtype" target="_blank">original page</a> for the example shown in this picture.
+        </Figure>
+      </div>
+      <div class="col-6">
         <p>
           An experimental Safari extension written in Swift and JavaScript that modifies the design
             of websites to fit my taste: typography-oriented, no ornamentation; only what’s necessary
@@ -60,16 +70,6 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
         <p>
           <a href="https://apps.apple.com/us/app/minimalist-design/id6765779070?mt=12">See on the App Store</a>
         </p>
-      </div>
-      <div class="col-6">
-        <Figure
-          src={safariExtensionImage}
-          alt="The CTAN page for the microtype package, restyled by the Minimalist Design extension"
-          ratio="8 / 5"
-          class="offset"
-        >
-          See the <a href="https://ctan.org/pkg/microtype" target="_blank">original page</a> for the example shown in this picture.
-        </Figure>
       </div>
     </div>
   </section>
@@ -82,7 +82,8 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
           I’ve taken public domain books and designed my own editions to make them more enjoyable to
             read and give them the typographical treatment they deserve, making the design reflect the
             tone of the stories. Both the interiors and the covers are my design too. I plan to release more
-            books eventually.
+            book
+s eventually.
         </p>
       </div>
     </div>
@@ -109,6 +110,8 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
 }
 
 .book {
+  margin-bottom: var(--space-m);
+
   a {
     text-decoration: none;
   }

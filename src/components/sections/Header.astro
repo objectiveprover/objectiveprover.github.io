@@ -62,9 +62,16 @@ const { nav } = Astro.props;
   margin-top: 1em;
 }
 
+@media (max-width: 500px) {
+  .contact-link {
+    margin-top: 0;
+  }
+}
+
 .toc {
   list-style: none;
   line-height: 1.6;
+  margin-bottom: var(--space-xl);
 
   a {
     text-decoration: none;
@@ -72,12 +79,11 @@ const { nav } = Astro.props;
 }
 
 .nav-label {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5em;
+  font-weight: 600;
 }
 
 .figure {
-  margin-top: 10rem;
-  margin-right: var(--space-page-margin);
-  margin-left: var(--space-page-margin);
+  margin-top: var(--space-xl);
 }
 </style>

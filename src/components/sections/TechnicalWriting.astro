@@ -114,17 +114,35 @@ const bookAppearances: Link[] = [
 
 <style>
 .titles {
-  padding-left: 1em;
-  margin-top: 1em;
   list-style: none;
 
   a {
     text-decoration: none;
-    font-style: italic;
+    position: relative;
+
+    &::after {
+      content: "↗";
+      position: absolute;
+      top: 50%;
+      line-height: 0.5;
+      right: -1em;
+      opacity: 0;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none !important;
+
+      &::after {
+        opacity: 1;
+      }
+    }
   }
 
   li + li {
-   margin-top: 0.25em;
+    margin-top: 0.25em;
+    border-top: 1px solid black;
+    padding-top: 0.5em;
   }
 }
 

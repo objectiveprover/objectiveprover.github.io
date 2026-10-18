@@ -51,24 +51,23 @@ const petriEntries: Link[] = [
     </h3>
     <div class="grid">
       <div class="col-6">
-
+        <Figure src={emacsImage} alt="Emacs Lisp code in my Emacs configuration" ratio="8 / 5" class="framed" />
+      </div>
+      <div class="col-6">
         <p>
           An Emacs configuration for a clear reading experience and to allow higher focus on code semantics. It’s focused on reducing cognitive effort as much as possible, to meet my own needs.
         </p>
         <p>Contrary to common wisdom, a white background with dark monochrome text is easier to read than a dark background with various colors mixed in the text. It’s mostly unnoticeable by people with average-to-high cognitive capacity, though.</p>
         <p class="links"><a href="https://github.com/objectiveprover/.emacs.d">See on GitHub</a></p>
       </div>
-      <div class="col-6">
-        <Figure src={emacsImage} alt="Emacs Lisp code in my Emacs configuration" ratio="8 / 5" class="framed" />
-      </div>
     </div>
   </section>
 
   <section class="page-subsection" aria-labelledby="petri-h">
-    <div class="grid">
-      <h3 id="petri-h">3.2—Petri</h3>
-      <div class="col-6">
+    <h3 id="petri-h">3.2—Petri</h3>
 
+    <div class="grid">
+      <div class="col-6" style="margin-bottom: var(--space-m);">
         <p>
           Programs that don’t belong in a product or large project are stored in this repository, it works as a central place for testing ideas and learning/implementing algorithms.
         </p>
