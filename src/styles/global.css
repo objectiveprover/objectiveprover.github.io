@@ -5,19 +5,19 @@
                                                                                   */
     --font-family-body: var(--font--swiza), sans-serif;
 
-    /* --font-size--1: clamp(0.9375rem, 0.9254rem + 0.0537vw, 0.9724rem); */
-    /* --font-size-0: clamp(1.125rem, 1.0385rem + 0.3846vw, 1.375rem); */
-    /* --font-size-1: clamp(1.35rem, 1.1443rem + 0.9142vw, 1.9443rem); */
-    /* --font-size-2: clamp(1.62rem, 1.2291rem + 1.7372vw, 2.7492rem); */
-    /* --font-size-3: clamp(1.944rem, 1.2713rem + 2.9897vw, 3.8873rem); */
-    /* --font-size-4: clamp(2.3328rem, 1.2376rem + 4.8675vw, 5.4967rem); */
+    --font-size--1: clamp(0.9375rem, 0.9254rem + 0.0537vw, 0.9724rem);
+    --font-size-0: clamp(1.125rem, 1.0385rem + 0.3846vw, 1.375rem);
+    --font-size-1: clamp(1.35rem, 1.1443rem + 0.9142vw, 1.9443rem);
+    --font-size-2: clamp(1.62rem, 1.2291rem + 1.7372vw, 2.7492rem);
+    --font-size-3: clamp(1.944rem, 1.2713rem + 2.9897vw, 3.8873rem);
+    --font-size-4: clamp(2.3328rem, 1.2376rem + 4.8675vw, 5.4967rem);
 
-    --font-size--1: clamp(0.9375rem, 0.9050rem + 0.1446vw, 1.0315rem);
-    --font-size-0: clamp(1.1250rem, 1.0385rem + 0.3846vw, 1.3750rem);
-    --font-size-1: clamp(1.3500rem, 1.1829rem + 0.7429vw, 1.8329rem);
-    --font-size-2: clamp(1.6200rem, 1.3350rem + 1.2665vw, 2.4432rem);
-    --font-size-3: clamp(1.9440rem, 1.4896rem + 2.0197vw, 3.2568rem);
-    --font-size-4: clamp(2.3328rem, 1.6375rem + 3.0901vw, 4.3413rem);
+    /* --font-size--1: clamp(0.9375rem, 0.9050rem + 0.1446vw, 1.0315rem); */
+    /* --font-size-0: clamp(1.1250rem, 1.0385rem + 0.3846vw, 1.3750rem); */
+    /* --font-size-1: clamp(1.3500rem, 1.1829rem + 0.7429vw, 1.8329rem); */
+    /* --font-size-2: clamp(1.6200rem, 1.3350rem + 1.2665vw, 2.4432rem); */
+    /* --font-size-3: clamp(1.9440rem, 1.4896rem + 2.0197vw, 3.2568rem); */
+    /* --font-size-4: clamp(2.3328rem, 1.6375rem + 3.0901vw, 4.3413rem); */
 
     /*******************************************************************************
      Grid
@@ -46,6 +46,11 @@
     --space-xl-2xl: clamp(3.375rem, 2.6394rem + 3.2692vw, 5.5rem);
     --space-2xl-3xl: clamp(4.5rem, 3.2019rem + 5.7692vw, 8.25rem);
     --space-3xl-4xl: clamp(6.75rem, 5.2788rem + 6.5385vw, 11rem);
+
+    /*******************************************************************************
+     Colors
+                                                                                  */
+    --color-text-secondary: #333;
 }
 
 *,
@@ -127,14 +132,14 @@ h1 {
 h2 {
     font-size: var(--font-size-3);
     margin-bottom: var(--space-xl);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.02em;
 }
 
 h3 {
     font-size: var(--font-size-2);
-    margin-bottom: var(--space-l);
-    font-weight: 500;
+    margin-bottom: var(--space-xl);
+    font-weight: 600;
     letter-spacing: -0.02em;
 
     .subtitle {
@@ -186,20 +191,10 @@ a:hover {
 }
 
 .page-section {
-    margin-top: var(--space-3xl);
-    margin-bottom: var(--space-3xl);
     position: relative;
-    padding-top: 2rem;
-
-    &::before {
-        content: "";
-        background-color: black;
-        height: 8px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-    }
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-2xl);
+    border-top: 9px solid currentColor;
 }
 
 .page-subsection {
@@ -207,7 +202,7 @@ a:hover {
     position: relative;
 
     h3 {
-        border-top: 5px solid black;
+        border-top: 5px solid currentColor;
         padding-top: 0.4em;
     }
 }
@@ -240,6 +235,7 @@ a:hover {
     justify-content: space-between;
     align-items: flex-end;
     font-size: var(--text-size-5);
+    margin-top: var(--space-3xl);
     margin-bottom: var(--space-3xl);
 }
 

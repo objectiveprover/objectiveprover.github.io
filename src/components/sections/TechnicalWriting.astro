@@ -72,20 +72,20 @@ const bookAppearances: Link[] = [
 
 ---
 
-<section id="technical-writing" class="page-section" aria-labelledby="technical-writing-h">
-  <div class="grid">
-    <div class="col-8">
-      <h2 id="technical-writing-h">4—Technical Writing</h2>
+  <section id="technical-writing" class="page-section" aria-labelledby="technical-writing-h">
+    <div class="grid">
+      <div class="col-8">
+        <h2 id="technical-writing-h">4—Technical Writing</h2>
 
-      <p>
-        I briefly worked as a technical writer from 2017 to 2020, writing about web development. Note that these articles might be outdated since publication.
-      </p>
+        <p>
+          I briefly worked as a technical writer from 2017 to 2020, writing about web development. Note that these articles might be outdated since publication.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="grid">
-    <div>
-      {
+    <div class="grid">
+      <div>
+        {
         articleGroups.map((g) => (
           <div class="group">
             <h3 class="publication-title">{g.title} <span class="subtitle">{g.publication}</span></h3>
@@ -99,18 +99,19 @@ const bookAppearances: Link[] = [
         ))
       }
 
-      <div class="group">
-        <h3 class="publication-title">Appearances in Books
-          <span class="subtitle">Note: I don’t own the copyright on these books</span>
-        </h3>
+        <div class="group">
+          <h3 class="publication-title">Appearances in Books
+            <span class="subtitle">Note: I don’t own the copyright on these books</span>
+          </h3>
 
-        <ul class="titles">
-          {bookAppearances.map((b) => <li><a href={b.url}>{b.label}</a></li>)}
-        </ul>
+          <ul class="titles">
+            {bookAppearances.map((b) => <li><a href={b.url}>{b.label}</a></li>)}
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
 
 <style>
 .titles {
@@ -148,7 +149,7 @@ const bookAppearances: Link[] = [
 
 .publication-title {
   font-size: var(--font-size-1);
-  letter-spacing: -0.01em;
+  margin-bottom: 1em;
 }
 
 .subtitle {

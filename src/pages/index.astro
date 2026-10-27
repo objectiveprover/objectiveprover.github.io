@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
 ---
 
 <Base title={title}>
-  <main id="main" class="container">
+  <main id="main">
     <Header
       nav={[
         { id: "web-development", label: "1—Web Development" },
@@ -31,12 +31,10 @@ const year = new Date().getFullYear();
     <CognitiveDesigner />
   </main>
 
-  <footer class="container">
-    <div class="colophon">
-      <div>
-        <p class="copyright">Copyright {year}, Jaime Hernández</p>
-      </div>
-      <a href="mailto:contact@jaime.one">Contact</a>
+  <footer class="colophon">
+    <div>
+      <p class="copyright">Copyright {year}, Jaime Hernández</p>
     </div>
+    <a href="mailto:contact@jaime.one">Contact</a>
   </footer>
 </Base>

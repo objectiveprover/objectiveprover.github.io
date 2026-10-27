@@ -151,7 +151,7 @@ const clients: Client[] = [
   </div>
 
   <section class="page-subsection" aria-labelledby="clients-h">
-    <h3 id="clients-h">1.1—Websites for Clients</h3>
+    <h3 id="clients-h">1.1—Clients</h3>
 
     <div class="grid">
       <div class="col-6">
@@ -165,17 +165,17 @@ const clients: Client[] = [
         <p>
           On these websites I always tried to build everything from scratch to make sure nothing existed by accident or had baggage brought by a library. Fortunately, the designers I worked with on new websites had the kind of aesthetic ideas that I value and were ideal for my kind of work.
         </p>
-
       </div>
     </div>
 
-    <ul class="clients grid">
+    <div class="grid">
+      <ul class="clients" style="grid-column: span 8 / -1;">
       {
             clients.map((c) => (
-              <li class="col-6 client">
-                <h4>{c.url ? <a href={c.url}>{c.name}</a> : c.name}</h4>
+              <li class="client">
+                <h4>{c.url ? <a href={c.url}>{c.name}</a> : c.name}—<em class="client-what">{c.what}</em></h4>
                 <p>
-                  {c.what} {c.scope}
+                  {c.scope}
                 </p>
                 {(c.collaborators || c.design) && (
                   <p class="credits">
@@ -203,6 +203,7 @@ const clients: Client[] = [
             ))
           }
     </ul>
+    </div>
 
     <p class="note">
       This is only a partial list of the websites I have built since 2019 or so. Some of these have since been redesigned or replaced. Earlier versions are on the <a href="https://web.archive.org/">Wayback Machine</a>, and I can send links to specific snapshots on request.
@@ -257,6 +258,7 @@ const clients: Client[] = [
   </section>
 </section>
 
+
 <style>
 .clients {
   list-style: none;
@@ -266,6 +268,20 @@ const clients: Client[] = [
   a {
     text-decoration: none;
   }
+}
+
+.client {
+  border-top: 2px solid black;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+
+.client-what {
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-text-secondary);
+  text-transform: none;
 }
 
 .note {
@@ -293,5 +309,4 @@ const clients: Client[] = [
     margin-left: 2rem;
   }
 }
-
 </style>
