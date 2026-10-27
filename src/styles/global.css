@@ -48,9 +48,19 @@
     --space-3xl-4xl: clamp(6.75rem, 5.2788rem + 6.5385vw, 11rem);
 
     /*******************************************************************************
+     Lines
+     The calc keeps the lines the same thickness as the fonts where they are
+     used, usually as borders on headlines.
+                                                                                  */
+    --line-size-4: calc(var(--font-size-4) / 9);
+    --line-size-3: calc(var(--font-size-3) / 9);
+    --line-size-2: calc(var(--font-size-2) / 9);
+    --line-size-1: calc(var(--font-size-1) / 9);
+
+    /*******************************************************************************
      Colors
                                                                                   */
-    --color-text-secondary: #333;
+    --color-accent: #c83524;
 }
 
 *,
@@ -92,6 +102,10 @@ screen and (min-resolution: 2dppx) {
     .col-8 {
         grid-column: auto / span 8;
     }
+
+    p[class^="col-"] + p[class^="col-"] {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 500px) {
@@ -107,6 +121,12 @@ body {
     font-size: var(--font-size-0);
     line-height: 1.4;
     letter-spacing: -0.01em;
+}
+
+.links {
+    a {
+        text-decoration: underline;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -174,6 +194,10 @@ cite {
     font-style: italic;
 }
 
+span.index {
+    color: var(--color-accent);
+}
+
 img {
     display: block;
     max-width: 100%;
@@ -192,9 +216,10 @@ a:hover {
 
 .page-section {
     position: relative;
-    padding-top: var(--space-m);
+    padding-top: var(--space-xs);
     padding-bottom: var(--space-2xl);
-    border-top: 9px solid currentColor;
+    border-top: var(--line-size-4) solid currentColor;
+    margin-top: var(--space-3xl);
 }
 
 .page-subsection {
@@ -202,7 +227,7 @@ a:hover {
     position: relative;
 
     h3 {
-        border-top: 5px solid currentColor;
+        border-top: var(--line-size-3) solid currentColor;
         padding-top: 0.4em;
     }
 }

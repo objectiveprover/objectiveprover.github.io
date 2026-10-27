@@ -26,7 +26,8 @@ const { nav } = Astro.props;
     <nav class="col-6" aria-labelledby="nav-label">
       <p id="nav-label" class="nav-label small-caps">Navigate to:</p>
       <ul class="toc">
-        {nav.map((s) => <li><a href={`#${s.id}`}>{s.label}</a></li>)}
+        {nav.map((s, i) => <li><a href={`#${s.id}`}>
+          <span class="index">{i + 1}</span>&nbsp;{s.label}</a></li>)}
       </ul>
     </nav>
 

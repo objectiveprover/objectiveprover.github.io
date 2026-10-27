@@ -130,28 +130,19 @@ const clients: Client[] = [
 ---
 
 <section class="page-section" id="web-development" aria-labelledby="web-development-h">
-  <h2 id="web-development-h">1—Web Development</h2>
+  <h2 id="web-development-h"><span class="index">1&nbsp;&nbsp;</span>Web Development</h2>
 
-  <div class="grid">
-    <div class="col-8">
-      <div class="section-description">
-        <p>
-          I’ve been a professional web developer since 2014. My goal from the beginning has been to
-          build websites in the simplest way possible to achieve the vision of the designers who made
-          them, down to the smallest details and with high consistency. High performance and freedom
-          of customization are natural consequences of my approach of keeping things simple and
-          knowing every part of the system.
-        </p>
-        <p>
-          Sometimes, while implementing a design, we discover structural and visual problems based on
-          what the code looks like semantically; good design and good code go hand in hand.
-        </p>
-      </div>
-    </div>
+  <div class="section-description grid">
+    <p class="col-6">
+      I’ve been a professional web developer since 2014. My goal from the beginning has been to build websites in the simplest way possible to achieve the vision of the designers who made them, down to the smallest details and with high consistency. High performance and freedom of customization are natural consequences of my approach of keeping things simple and knowing every part of the system.
+    </p>
+    <p class="col-6">
+      Sometimes, while implementing a design, we discover structural and visual problems based on  what the code looks like semantically; good design and good code go hand in hand.
+    </p>
   </div>
 
   <section class="page-subsection" aria-labelledby="clients-h">
-    <h3 id="clients-h">1.1—Clients</h3>
+    <h3 id="clients-h"><span class="index">1.1&nbsp;&nbsp;</span>Clients</h3>
 
     <div class="grid">
       <div class="col-6">
@@ -174,9 +165,7 @@ const clients: Client[] = [
             clients.map((c) => (
               <li class="client">
                 <h4>{c.url ? <a href={c.url}>{c.name}</a> : c.name}—<em class="client-what">{c.what}</em></h4>
-                <p>
-                  {c.scope}
-                </p>
+
                 {(c.collaborators || c.design) && (
                   <p class="credits">
                     {c.collaborators && (
@@ -199,6 +188,10 @@ const clients: Client[] = [
                     )}
                   </p>
                 )}
+
+                <p class="client-scope">
+                  {c.scope}
+                </p>
               </li>
             ))
           }
@@ -211,7 +204,7 @@ const clients: Client[] = [
   </section>
 
   <section class="page-subsection" aria-labelledby="concise-h">
-    <h3 id="concise-h">1.2—Concise CSS</h3>
+    <h3 id="concise-h"><span class="index">1.2</span>&nbsp;&nbsp;Concise CSS</h3>
 
     <div class="grid">
       <div class="col-6">
@@ -271,9 +264,10 @@ const clients: Client[] = [
 }
 
 .client {
-  border-top: 2px solid black;
+  border-top: var(--line-size-2) solid black;
   padding-top: 0.5em;
   padding-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .client-what {
@@ -282,6 +276,11 @@ const clients: Client[] = [
   letter-spacing: -0.02em;
   color: var(--color-text-secondary);
   text-transform: none;
+
+}
+
+.client-scope {
+  margin-top: 1em;
 }
 
 .note {
@@ -294,10 +293,10 @@ const clients: Client[] = [
 }
 
 .credits {
-  margin-top: 0;
   font-size: var(--font-size--1);
-  margin-top: 1em;
+  margin-top: 0em;
   letter-spacing: 0.01em;
+  font-weight: 500;
 }
 
 .links {
