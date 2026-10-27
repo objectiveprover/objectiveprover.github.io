@@ -12,7 +12,7 @@ type Client = {
   name: string;
   url?: string;
   what: string;
-  scope: string;
+  scope: string[];
   collaborators?: Link[];
   design?: Link;
 }
@@ -24,31 +24,62 @@ const withSeparators = (list: Link[]) =>
     sep: i === 0 ? "" : i === list.length - 1 ? " and " : ", ",
   }));
 
-const keenan: Link = { label: "Keenan Payne", url: "https://keenanpayne.com" };
-const nels: Link = { label: "Nels Andereck", url: "https://www.nelsandereck.com/" };
-const play = (path = ""): Link => ({ label: "Play", url: `https://play.studio/${path}` });
+const keenan: Link = {
+  label: "Keenan Payne",
+  url: "https://keenanpayne.com"
+};
+
+const nels: Link = {
+  label: "Nels Andereck",
+  url: "https://www.nelsandereck.com/"
+};
+
+const family: Link = {
+  label: "Family Style",
+  url: `https://wearefamilystyle.com/cardless`
+};
+
+const play = (path = ""): Link =>
+  ({ label: "Play", url: `https://play.studio/${path}` });
+
 
 const clients: Client[] = [
   {
     name: "Neuralink",
     url: "https://neuralink.com/",
     what: "Brain–computer interfaces.",
-    scope: "Built the marketing website from scratch and maintained it afterward.",
+    scope: ["Implementation", "Maintenance"],
     collaborators: [keenan],
     design: play("work/neuralink"),
+  },
+  {
+    name: "Cardless",
+    url: "https://www.cardless.com/",
+    what: "Embedded credit card platform.",
+    scope: ["Implementation in Framer"],
+    collaborators: [keenan],
+    design: family,
+  },
+  {
+    name: "Play",
+    url: "https://play.studio/",
+    what: "Design studio.",
+    scope: ["Implementation", "Maintenance"],
+    design: { label: "Play (in-house)" },
   },
   {
     name: "Sparrow",
     url: "https://sparrow.com/",
     what: "Employee leave management.",
-    scope: "Built the marketing website from scratch, including the CMS integration, and maintained it afterward.",
+    scope: ["Implementation", "CMS Integration", "Maintenance"],
     collaborators: [keenan, nels],
     design: play("work/sparrow"),
   },
   {
     name: "Transform",
-    what: "Metrics layer for data teams, now part of dbt Labs.",
-    scope: "Built the marketing website from scratch, including the CMS integration, and maintained it afterward.",
+    url: "https://www.getdbt.com/",
+    what: "Metrics layer for data teams.",
+    scope: ["Implementation", "CMS Integration", "Maintenance"],
     collaborators: [keenan],
     design: play(),
   },
@@ -56,7 +87,7 @@ const clients: Client[] = [
     name: "Sanno Capital",
     url: "https://sannocapital.com/",
     what: "Investment firm.",
-    scope: "Built the marketing website from scratch, including the CMS integration.",
+    scope: ["Implementation", "CMS Integration"],
     collaborators: [keenan],
     design: play(),
   },
@@ -64,7 +95,7 @@ const clients: Client[] = [
     name: "Refactor Capital",
     url: "https://refactor.com/",
     what: "Venture capital firm.",
-    scope: "Built the marketing website from scratch, including the CMS integration.",
+    scope: ["Implementation", "CMS Integration"],
     collaborators: [keenan, nels],
     design: play("work/refactor"),
   },
@@ -72,48 +103,36 @@ const clients: Client[] = [
     name: "Collective[i]",
     url: "https://collectivei.com/",
     what: "AI-driven sales intelligence.",
-    scope: "Built the marketing website from scratch, including the CMS integration.",
+    scope: ["Implementation", "CMS Integration"],
     collaborators: [keenan],
     design: play("work/collective-i"),
-  },
-  {
-    name: "Cy Biopharma",
-    what: "Biopharmaceutical company.",
-    scope: "Built the interim landing page while the full website was being designed and developed by others.",
-    design: play("work/cy-biopharma"),
-  },
-  {
-    name: "Play",
-    url: "https://play.studio/",
-    what: "Design studio.",
-    scope: "Rebuilt the studio’s own website from scratch, replacing a codebase that had become too complex to update.",
-    design: { label: "Play (in-house)" },
   },
   {
     name: "Simulmedia",
     url: "https://www.simulmedia.com/",
     what: "TV advertising platform.",
-    scope:
-      "Migrated the website off a deprecated version of Next.js, then handled ongoing content updates and the layout and design adjustments they required, but didn't do a complete redesign.",
+    scope: ["Modernization", "Maintenance", "Code Cleanup"],
+    design: { label: "Simulmedia (In-house)" }
   },
   {
     name: "PlayerWON",
     url: "https://www.playerwon.com/",
-    what: "In-game advertising platform, a division of Simulmedia.",
-    scope: "Migrated the website off a deprecated version of Next.js, aligned its codebase with Simulmedia’s (including some shared components), and maintained it, but didn't do a complete redesign.",
+    what: "In-game advertising platform.",
+    scope: ["Modernization", "Maintenance", "Code Cleanup"],
+    design: { label: "Simulmedia (In-house)" }
   },
   {
     name: "GetWhys",
     url: "https://www.getwhys.io/",
     what: "AI for customer research.",
-    scope: "Contributed to both the overall design and the development of the marketing website.",
+    scope: ["Design", "Implementation"],
     collaborators: [keenan],
   },
   {
     name: "Metrus Energy",
     url: "https://metrusenergy.com/",
     what: "Energy-efficiency financing.",
-    scope: "Built the marketing website and maintained it for several years.",
+    scope: ["Implementation", "Maintenance"],
     collaborators: [keenan],
     design: { label: "PACT", url: "https://www.pact.studio/" },
   },
@@ -121,7 +140,7 @@ const clients: Client[] = [
     name: "Atinc",
     url: "https://atinc.vc/",
     what: "Venture capital firm.",
-    scope: "Developed the marketing website and maintained it afterward.",
+    scope: ["Implementation", "Maintenance"],
     collaborators: [keenan],
     design: { label: "Paladar Studio" },
   },
@@ -168,23 +187,25 @@ const clients: Client[] = [
       </div>
       <div class="col-6">
         <p>
-          On these websites I always tried to build everything from scratch to make sure nothing existed by accident or had baggage brought by a library. Fortunately, the designers I worked with on new websites had the kind of aesthetic ideas that I value and were ideal for my kind of work.
+          On these websites I always tried to build everything from scratch to make sure nothing existed by accident or had baggage brought by a library. Fortunately, the designers I worked with on new websites had the kind of aesthetic ideas that I value and were ideal for my work.
         </p>
       </div>
     </div>
 
-    <div class="grid">
-      <ul class="clients" style="grid-column: span 8 / -1;">
+    <ul class="clients grid">
       {
             clients.map((c) => (
-              <li class="client">
-                <h4>{c.url ? <a href={c.url}>{c.name}</a> : c.name}—<em class="client-what">{c.what}</em></h4>
+              <li class="client col-6">
+                <h4>
+                  {c.url ? <a href={c.url}>{c.name}</a> : c.name}
+                  : <em class="client-what">&nbsp;{c.what}</em>
+                </h4>
 
                 {(c.collaborators || c.design) && (
                   <p class="credits">
                     {c.collaborators && (
                       <>
-                        With{" "}
+                        With&nbsp;
                         {withSeparators(c.collaborators).map((p) => (
                           <>
                             {p.sep}
@@ -194,6 +215,7 @@ const clients: Client[] = [
                         .{" "}
                       </>
                     )}
+
                     {c.design && (
                       <>
                         Design by{" "}
@@ -203,14 +225,14 @@ const clients: Client[] = [
                   </p>
                 )}
 
-                <p class="client-scope">
-                  {c.scope}
-                </p>
+                <ul class="scope-tags">
+                  {c.scope.map(tag => <li class="scope-tag">{tag}</li>)}
+                </ul>
               </li>
             ))
           }
     </ul>
-    </div>
+
 
     <p class="note">
       This is only a partial list of the websites I have built since 2019 or so. Some of these have since been redesigned or replaced. Earlier versions are on the <a href="https://web.archive.org/">Wayback Machine</a>, and I can send links to specific snapshots on request.
@@ -269,7 +291,7 @@ const clients: Client[] = [
 .clients {
   list-style: none;
   margin-top: var(--space-2xl);
-  row-gap: var(--space-xl);
+  row-gap: var(--space-xs);
 
   a {
     text-decoration: none;
@@ -292,13 +314,24 @@ const clients: Client[] = [
 
 }
 
-.client-scope {
+.scope-tags {
+  list-style: none;
+  display: flex;
+  font-size: var(--font-size--1);
+  gap: 0.5em;
+}
+
+.scope-tag {
   margin-top: 1em;
+  border: 1px solid black;
+  line-height: 1;
+  border-radius: 1em;
+  padding: 0.25em 0.5em;
 }
 
 .note {
   font-size: var(--font-size--1);
-  margin-top: var(--space-2xl);
+  margin-top: var(--space-m);
   text-align: right;
   max-width: 50ch;
   margin-left: auto;

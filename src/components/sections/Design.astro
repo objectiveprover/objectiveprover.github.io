@@ -31,7 +31,7 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
 
 
 <section id="design" class="page-section" aria-labelledby="design-h">
-  <h2 id="design-h"><span class="index">1</span>&nbsp;&nbsp;Design</h2>
+  <h2 id="design-h"><span class="index">2</span>&nbsp;&nbsp;Design</h2>
   <div class="grid">
     <p class="col-6">
       How can I build my own things if I only know how to code? I started improving myself as a
@@ -46,7 +46,7 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
   </div>
 
   <section class="page-subsection" aria-labelledby="minimalist-h">
-    <h3 id="minimalist-h"><span class="index">2.1</span>&nbsp;&nbsp;Minimalist Design</h3>
+    <h3 id="minimalist-h"><span class="index">2.1</span>&nbsp;&nbsp;The Minimalist</h3>
     <div class="grid">
       <div class="col-6">
         <Figure
@@ -74,7 +74,7 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
   </section>
 
   <section class="page-subsection" aria-labelledby="typography-h">
-    <h3 id="typography-h"><span class="index">2.2</span>&nbsp;&nbsp;Typography</h3>
+    <h3 id="typography-h"><span class="index">2.2</span>&nbsp;&nbsp;Books</h3>
     <div class="grid">
       <div class="col-6">
         <p>
@@ -89,10 +89,14 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
       {
             books.map((b) => (
               <li class="book col-6">
-                <Figure src={b.cover} alt={b.alt} ratio="16 / 9" />
-                <h4 class="book-title"><a href={b.url}>{b.title}</a></h4>
+                <a href={b.url} target="_blank">
+                  <Figure src={b.cover} alt={b.alt} ratio="16 / 9" />
+                </a>
+                <h4 class="book-title">
+                  <a href={b.url} target="_blank">{b.title}</a>
+                </h4>
                 <p class="author">{b.author}</p>
-                <p class="purchase"><a href={b.url}>Purchase on Gumroad</a></p>
+                <p class="purchase"></p>
               </li>
             ))
           }
@@ -102,6 +106,10 @@ import whiteNightsImage from "@/assets/whitenights.jpg";
 
 
 <style>
+.page-section {
+  padding-bottom: 0;
+}
+
 .books {
   list-style: none;
   margin-top: var(--space-xl);
