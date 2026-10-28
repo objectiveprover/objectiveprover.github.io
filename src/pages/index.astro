@@ -2,10 +2,9 @@
 import Base from "@/layouts/Base.astro";
 import Header from "@/components/sections/Header.astro";
 import WebDevelopment from "@/components/sections/WebDevelopment.astro";
-import Design from "@/components/sections/Design.astro";
+import Minimalist from "@/components/sections/Minimalist.astro";
 import Programming from "@/components/sections/Programming.astro";
 import TechnicalWriting from "@/components/sections/TechnicalWriting.astro";
-import CognitiveDesigner from "@/components/sections/CognitiveDesigner.astro";
 
 const title = "Jaime Hernández—Cognitive Designer · Web Developer since 2013";
 
@@ -17,25 +16,22 @@ const year = new Date().getFullYear();
     <Header
       nav={[
         { id: "web-development", label: "Web Development" },
-        { id: "design", label: "Design" },
         { id: "programming", label: "Programming" },
+        { id: "the-minimalist", label: "The Minimalist" },
         { id: "technical-writing", label: "Technical Writing" },
-        { id: "cognitive-designer", label: "What Is a Cognitive Designer" },
       ]}
     />
 
     <WebDevelopment />
-    <Design />
     <Programming />
+    <Minimalist />
     <TechnicalWriting />
-    <CognitiveDesigner />
   </main>
 
   <footer class="colophon">
     <p class="copyright">Copyright {year}, Jaime Hernández</p>
     <a href="mailto:contact@jaime.one">Contact</a>
-
   </footer>
 
-  <p style="margin-bottom: var(--space-l);"><small><em>Disclaimer</em>: AI was used exclusively for grammar suggestions on my own writing, and to turn the photo of my lab into a drawing-like picture.</small></p>
+  <p style="margin-bottom: var(--space-l);"><small><em>Disclaimer</em>: AI was <strong>only</strong> used for grammar suggestions on my own writing, and to turn the photo of my lab into a drawing-like picture.</small></p>
 </Base>
