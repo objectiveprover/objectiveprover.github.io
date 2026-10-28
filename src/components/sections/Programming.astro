@@ -39,12 +39,11 @@ const petriEntries: PetriLink[] = [
   <h2 id="programming-h"><span class="index">2</span>&nbsp;&nbsp;Programming</h2>
   <div class="grid">
     <p class="col-6">
-      At the moment most of my programming is experimental, and the amount of public code is
-          minimal because I’ve worked on building websites for clients most of my career. I’m looking to expand my skills in different languages, especially live ones (which
-          can be modified while they run) like a Lisp or Forth, but also high-integrity ones like
-          Ada/SPARK.
+      I’ve started applying my design skills into programming, not in the visual sense, but in the conceptual one. Trying to deeply understand how things work and how to make proper abstractions.
     </p>
-    <p class="col-6">For clients or employers, I welcome other more common programming languages like JavaScript/TypeScript, where I have the most experience in.</p>
+    <p class="col-6">
+      Right now I’m focusing on creating a good text editor environment for programming, which is through customizing Emacs. And also doing experiments to learn and prove ideas in different programming languages.
+    </p>
   </div>
 
   <section class="page-subsection" aria-labelledby="emacs-h">
@@ -156,6 +155,28 @@ const petriEntries: PetriLink[] = [
   border-radius: 1em;
   padding: 0.25em 0.5em;
   font-size: var(--font-size--1);
+}
+
+@media (max-width: 900px) {
+  .entry {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entry + .entry {
+    margin-top: 2em;
+  }
+
+  .tool-tags {
+    gap: 0;
+    flex-direction: column;
+    margin-top: 0.5em;
+    width: 100%;
+  }
+
+  .tool-tag {
+    margin-top: 0.5em;
+  }
 }
 
 </style>

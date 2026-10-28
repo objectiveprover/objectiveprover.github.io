@@ -253,6 +253,10 @@ a:hover {
     margin-left: auto;
     margin-top: 2rem;
     font-style: italic;
+
+    a {
+        text-decoration: underline;
+    }
 }
 
 .colophon {

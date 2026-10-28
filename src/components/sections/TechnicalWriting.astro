@@ -92,7 +92,7 @@ const bookAppearances: Link[] = [
 
             <ul class="titles">
               {g.articles.map((a) => (
-                <li>{a.url ? <a href={a.url}>{a.label}</a> : <cite>{a.label}</cite>}</li>
+                <li>{a.url ? <a href={a.url} target="_blank">{a.label}</a> : <cite>{a.label}</cite>}</li>
               ))}
             </ul>
           </div>

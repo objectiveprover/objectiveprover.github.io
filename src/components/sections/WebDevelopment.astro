@@ -161,15 +161,15 @@ const clients: Client[] = [
 
     <div class="col-6">
       <p>
-      In recent years, I have switched my focus to maintenance with the purpose of improving the current state of the web in any way available to me:
+      In recent years, I have switched my focus to maintenance with the purpose of improving the current state of the web:
       </p>
 
       <ul class="features">
         <li>Update content or add new features without breaking the structure and visual design.</li>
         <li>Clean up a codebase when it has become confusing or difficult to modify.</li>
         <li>Upgrade or remove dependencies as needed.</li>
-        <li>Improve performance and implement changes from SEO audits.</li>
-        <li>Visual improvements without full redesigns.</li>
+        <li>Improve performance and implement changes from SEO auditors.</li>
+        <li>Full but progressive visual improvements without spending in a complete redesign.</li>
       </ul>
     </div>
 
@@ -181,8 +181,9 @@ const clients: Client[] = [
     <div class="grid">
       <div class="col-6">
         <p>
-          Most of my client work came through two long collaborations: web developer Keenan Payne,
-          and with the design studio Play. I built these websites from scratch, translating the Figma designs into code, and stayed on to maintain most of them afterward.
+          Most of my client work came through two long collaborations: web developer <a href="https://keenanpayne.com">Keenan Payne</a>,
+          and with the design studio <a href="https://play.studio/">Play</a>.</p>
+<p>I built these websites from scratch, translating the Figma designs into code, and stayed on to maintain most of them afterward.
         </p>
       </div>
       <div class="col-6">
@@ -327,6 +328,19 @@ const clients: Client[] = [
   line-height: 1;
   border-radius: 1em;
   padding: 0.25em 0.5em;
+}
+
+
+@media (max-width: 900px) {
+  .scope-tags {
+    gap: 0;
+    flex-direction: column;
+    margin-top: 0.5em;
+  }
+
+  .scope-tag {
+    margin-top: 0.5em;
+  }
 }
 
 .note {
