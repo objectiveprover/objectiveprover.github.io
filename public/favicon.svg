@@ -1,4 +1,40 @@
-<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="500" height="500" fill="white"/>
-<path d="M407.5 250C407.5 336.985 336.985 407.5 250 407.5C163.015 407.5 92.5 336.985 92.5 250C92.5 163.015 163.015 92.5 250 92.5C336.985 92.5 407.5 163.015 407.5 250Z" stroke-width="35" stroke="black"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 500 500"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.854034"
+     inkscape:cx="226.53306"
+     inkscape:cy="253.2316"
+     inkscape:window-width="2386"
+     inkscape:window-height="1560"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="M407.5 250C407.5 336.985 336.985 407.5 250 407.5C163.015 407.5 92.5 336.985 92.5 250C92.5 163.015 163.015 92.5 250 92.5C336.985 92.5 407.5 163.015 407.5 250Z"
+     stroke-width="35"
+     stroke="black"
+     id="path1" />
 </svg>
