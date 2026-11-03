@@ -7,7 +7,7 @@ type PetriLink = {
   tools: string[];
 }
 
-import emacsImage from "@/assets/emacs.jpg";
+import emacsImage from "@/assets/emacs.png";
 
 const petriEntries: PetriLink[] = [
   {
@@ -36,9 +36,6 @@ const petriEntries: PetriLink[] = [
     <p class="col-6">
       I’ve started applying my design skills to programming, not in the visual sense, but in the conceptual one. Trying to deeply understand how things work and how to make proper abstractions.
     </p>
-    <p class="col-6">
-      Right now I’m building a programming environment by customizing Emacs, and running experiments to learn and test ideas in different programming languages.
-    </p>
   </div>
 
   <section class="page-subsection" aria-labelledby="emacs-h">
@@ -51,7 +48,13 @@ const petriEntries: PetriLink[] = [
       </div>
       <div class="col-6">
         <p>
-          An Emacs configuration built for clear reading and closer attention to code semantics, by omitting high-contrast coloring of all syntax.
+          An Emacs configuration built for clear reading and closer attention to code semantics, by omitting high-contrast coloring of all syntax. There is only high contrast between comments and code, to make emphasis in documentation.
+        </p>
+        <p>
+          I use it exclusively on the terminal because I find that pure text provides me with a better editing experience, without visual artifacts. And also I can edit files remotely in the same way I do locally, which I do quite often.
+        </p>
+        <p>
+          The environment that Emacs provides for live and interactive programming is unmatched. That has also created a strong interest for languages like Scheme and Forth.
         </p>
         <p class="links"><a href="https://github.com/objectiveprover/.emacs.d">See on GitHub</a></p>
       </div>
@@ -71,7 +74,7 @@ const petriEntries: PetriLink[] = [
     </div>
 
     <div class="petri-entries">
-      <h4 class="list-heading">Latest Experiments:</h4>
+      <h4 class="list-heading">Featured experiments:</h4>
 
       <ul class="titles">
         {petriEntries.map((e) => <li class="entry">
