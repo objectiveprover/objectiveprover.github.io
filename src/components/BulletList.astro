@@ -1,0 +1,22 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="bullets">
+  {items.map((item) => <li>{item}</li>)}
+</ul>
+
+<style>
+.bullets {
+  margin-top: 1em;
+  margin-left: 1.5em;
+
+  li + li {
+    margin-top: 0.5em;
+  }
+}
+</style>

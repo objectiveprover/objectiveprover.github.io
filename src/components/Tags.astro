@@ -1,0 +1,41 @@
+---
+// A row of pill-shaped labels; stacks vertically on narrow screens.
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<ul class="tags">
+  {tags.map((tag) => <li class="tag">{tag}</li>)}
+</ul>
+
+<style>
+.tags {
+  list-style: none;
+  display: flex;
+  font-size: var(--font-size--1);
+  gap: 0.5em;
+}
+
+.tag {
+  border: 1px solid black;
+  line-height: 1;
+  border-radius: 1em;
+  padding: 0.25em 0.5em;
+}
+
+@media (max-width: 900px) {
+  .tags {
+    gap: 0;
+    flex-direction: column;
+    margin-top: 0.5em;
+    width: 100%;
+  }
+
+  .tag {
+    margin-top: 0.5em;
+  }
+}
+</style>

@@ -1,0 +1,95 @@
+---
+// Ruled list of links that show an arrow on hover. Items without a URL are
+// rendered as citations. Items with tags show them on the right.
+import type { LinkItem } from "@/types";
+import Tags from "@/components/Tags.astro";
+
+interface Props {
+  items: LinkItem[];
+  /** Small heading shown above the list. */
+  heading?: string;
+  /** Open links in a new tab. */
+  newTab?: boolean;
+}
+
+const { items, heading, newTab = false } = Astro.props;
+const target = newTab ? "_blank" : undefined;
+---
+
+<div class:list={["link-list", { "with-heading": heading }]}>
+  {heading && <h4 class="heading">{heading}</h4>}
+
+  <ul class="items">
+    {items.map((item) => (
+      <li class="item">
+        {item.url ? <a href={item.url} target={target}>{item.label}</a> : <cite>{item.label}</cite>}
+        {item.tags && <Tags tags={item.tags} />}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+.with-heading {
+  margin-top: var(--space-2xl);
+
+  .items {
+    margin-top: var(--space-s);
+  }
+}
+
+.heading {
+  font-size: var(--font-size-0);
+  margin-bottom: 0;
+}
+
+.items {
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item + .item {
+  margin-top: 0.25em;
+  border-top: var(--line-size-1) solid black;
+  padding-top: 0.5em;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: "↗";
+    position: absolute;
+    top: 50%;
+    line-height: 0.5;
+    right: -1em;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none !important;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item:has(.tags) + .item {
+    margin-top: 2em;
+  }
+}
+</style>

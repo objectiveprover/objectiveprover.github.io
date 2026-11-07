@@ -1,0 +1,101 @@
+---
+import type { Client, Link } from "@/types";
+import Tags from "@/components/Tags.astro";
+
+interface Props {
+  clients: Client[];
+}
+
+const { clients } = Astro.props;
+
+// Format how the list is displayed based on the number of items
+// "A", "A and B", "A, B and C"
+const withSeparators = (list: Link[]) =>
+  list.map((p, i) => ({
+    ...p,
+    sep: i === 0 ? "" : i === list.length - 1 ? " and " : ", ",
+  }));
+---
+
+<ul class="clients grid">
+  {clients.map((c) => (
+    <li class="client col-6">
+      <h4>
+        {c.url ? <a href={c.url}>{c.name}</a> : c.name}
+        : <em class="client-what">&nbsp;{c.what}</em>
+      </h4>
+
+      {(c.collaborators || c.design) && (
+        <p class="credits">
+          {c.collaborators && (
+            <>
+              With&nbsp;
+              {withSeparators(c.collaborators).map((p) => (
+                <>
+                  {p.sep}
+                  <a href={p.url}>{p.label}</a>
+                </>
+              ))}
+              .{" "}
+            </>
+          )}
+
+          {c.design && (
+            <>
+              Design by{" "}
+              {c.design.url ? <a href={c.design.url}>{c.design.label}</a> : c.design.label}.
+            </>
+          )}
+        </p>
+      )}
+
+      <div class="scope">
+        <Tags tags={c.scope} />
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+.clients {
+  list-style: none;
+  margin-top: var(--space-2xl);
+  row-gap: var(--space-xs);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.client {
+  border-top: var(--line-size-2) solid black;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+.client-what {
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-text-secondary);
+  text-transform: none;
+}
+
+.credits {
+  font-size: var(--font-size--1);
+  margin-top: 0em;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+.scope {
+  margin-top: 1em;
+}
+
+@media (max-width: 900px) {
+  .scope {
+    margin-top: 0;
+  }
+}
+</style>

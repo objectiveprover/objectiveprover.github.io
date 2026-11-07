@@ -1,0 +1,14 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<!-- The number before the title comes from a CSS counter (see global.css) -->
+<section class="page-subsection" aria-labelledby={`${id}-h`}>
+  <h3 id={`${id}-h`}><span class="index"></span>&nbsp;&nbsp;{title}</h3>
+  <slot />
+</section>

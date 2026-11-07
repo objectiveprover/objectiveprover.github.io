@@ -232,6 +232,31 @@ a:hover {
     }
 }
 
+/*******************************************************************************
+ Section numbering
+ Numbers follow the order of sections in the markup: 1, 2… and 1.1, 1.2…
+                                                                              */
+main {
+    counter-reset: section;
+}
+
+.page-section {
+    counter-increment: section;
+    counter-reset: subsection;
+}
+
+.page-subsection {
+    counter-increment: subsection;
+}
+
+.page-section > h2 .index::before {
+    content: counter(section);
+}
+
+.page-subsection > h3 .index::before {
+    content: counter(section) "." counter(subsection);
+}
+
 .small-caps {
     font-variant: all-small-caps;
     font-weight: 500;

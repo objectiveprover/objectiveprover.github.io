@@ -1,0 +1,16 @@
+---
+// Small, right-aligned aside, e.g. a disclaimer at the end of a list.
+---
+
+<p class="note"><slot /></p>
+
+<style>
+.note {
+  font-size: var(--font-size--1);
+  margin-top: var(--space-m);
+  text-align: right;
+  max-width: 50ch;
+  margin-left: auto;
+  font-style: italic;
+}
+</style>

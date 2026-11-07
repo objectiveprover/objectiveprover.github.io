@@ -1,0 +1,26 @@
+---
+// Inline row of call-to-action links, e.g. "See on GitHub".
+import type { Link } from "@/types";
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<p class="links">
+  {links.map((l) => <a href={l.url}>{l.label}</a>)}
+</p>
+
+<style>
+.links {
+  a {
+    display: inline-block;
+  }
+
+  a + a {
+    margin-left: 2rem;
+  }
+}
+</style>

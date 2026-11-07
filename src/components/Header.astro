@@ -1,0 +1,84 @@
+---
+// Page header: title, contact link, table of contents, an introduction
+// (default slot) and an optional full-width figure ("figure" slot).
+type NavLink = {
+  id: string;
+  label: string;
+};
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  /** URL of the contact link. */
+  contact?: string;
+  nav: NavLink[];
+}
+
+const { title, subtitle, contact, nav } = Astro.props;
+const hasFigure = Astro.slots.has("figure");
+---
+
+<header class="header">
+  <div class="top">
+    <h1>{title} {subtitle && <span class="subtitle">{subtitle}</span>}</h1>
+    {contact && <a class="contact-link" href={contact}>Contact</a>}
+  </div>
+
+  <div class="grid">
+    <nav class="col-6" aria-labelledby="nav-label">
+      <p id="nav-label" class="nav-label small-caps">Navigate to:</p>
+      <ul class="toc">
+        {nav.map((s, i) => <li><a href={`#${s.id}`}>
+          <span class="index">{i + 1}</span>&nbsp;{s.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="col-6">
+      <slot />
+    </div>
+  </div>
+
+  {hasFigure && <div class="figure"><slot name="figure" /></div>}
+</header>
+
+<style>
+.header {
+  margin-top: var(--space-xl);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-4xl);
+}
+
+.contact-link {
+  text-decoration: none;
+  margin-top: 1em;
+}
+
+@media (max-width: 500px) {
+  .contact-link {
+    margin-top: 0;
+  }
+}
+
+.toc {
+  list-style: none;
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.nav-label {
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
+.figure {
+  margin-top: var(--space-xl);
+}
+</style>

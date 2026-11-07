@@ -1,0 +1,48 @@
+---
+import type { Book } from "@/types";
+import Figure from "@/components/Figure.astro";
+
+interface Props {
+  books: Book[];
+}
+
+const { books } = Astro.props;
+---
+
+<ul class="books grid">
+  {books.map((b) => (
+    <li class="book col-6">
+      <a href={b.url} target="_blank">
+        <Figure src={b.cover} alt={b.alt} ratio="16 / 9" />
+      </a>
+      <h4 class="book-title">
+        <a href={b.url} target="_blank">{b.title}</a>
+      </h4>
+      <p class="author">{b.author}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+.books {
+  list-style: none;
+  margin-top: var(--space-xl);
+}
+
+.book {
+  margin-bottom: var(--space-m);
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.book-title {
+  margin-top: var(--space-s);
+  margin-bottom: 0.1em;
+}
+
+.author {
+  margin-top: 0.25em;
+}
+</style>

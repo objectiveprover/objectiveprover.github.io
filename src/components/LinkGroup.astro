@@ -1,0 +1,38 @@
+---
+// A titled group of links, e.g. a series of articles from one publication.
+import type { LinkItem } from "@/types";
+import LinkList from "@/components/LinkList.astro";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  items: LinkItem[];
+  newTab?: boolean;
+}
+
+const { title, subtitle, items, newTab } = Astro.props;
+---
+
+<div class="group">
+  <h3 class="title">{title} {subtitle && <span class="subtitle">{subtitle}</span>}</h3>
+  <LinkList items={items} newTab={newTab} />
+</div>
+
+<style>
+.group {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  font-size: var(--font-size-1);
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  font-size: var(--font-size--1);
+  margin-top: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+</style>
