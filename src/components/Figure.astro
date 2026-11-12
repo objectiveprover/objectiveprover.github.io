@@ -29,3 +29,25 @@ const hasCaption = Astro.slots.has("default");
   }
   {hasCaption && <figcaption><slot /></figcaption>}
 </figure>
+
+<style>
+    figure {
+        margin-bottom: var(--space-s);
+    }
+
+    figcaption {
+        line-height: 1.4;
+        text-align: right;
+        font-size: var(--font-size--1);
+        letter-spacing: 0;
+        font-weight: 400;
+        max-width: 50ch;
+        margin-left: auto;
+        margin-top: 2rem;
+        font-style: italic;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+</style>
