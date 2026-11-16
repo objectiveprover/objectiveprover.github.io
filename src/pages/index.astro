@@ -240,9 +240,11 @@ const bookAppearances: Link[] = [
       subtitle={tagline}
       contact={contact}
       nav={[
-        { id: "web-development", label: "Web Development" },
-        { id: "programming", label: "Programming" },
         { id: "the-minimalist", label: "The Minimalist" },
+        // { id: "petri", label: "Petri" },
+        { id: "tools", label: "Tools" },
+        { id: "concisecss", label: "Concise.css" },
+        { id: "clients", label: "Clients" },
         { id: "technical-writing", label: "Technical Writing" },
       ]}
     >
@@ -307,11 +309,7 @@ const bookAppearances: Link[] = [
       </Subsection>
     </Section>
 
-    <Section id="programming" title="Programming">
-      <div class="grid">
-        <p class="col-6">The art of applied abstraction.</p>
-      </div>
-
+    <Section id="tools" title="Tools">
       <Subsection id="emacs" title="Emacs">
         <div class="grid">
           <div class="col-6">
@@ -331,7 +329,7 @@ const bookAppearances: Link[] = [
       </Subsection>
     </Section>
 
-    <Section id="concise" title="Concise CSS">
+    <Section id="concisecss" title="Concise CSS">
       <div class="grid">
         <div class="col-6">
           <Figure src={conciseImage} alt="The Concise CSS documentation website" ratio="3 / 4" class="framed" />
